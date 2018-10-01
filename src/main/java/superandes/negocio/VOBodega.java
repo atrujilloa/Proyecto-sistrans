@@ -16,8 +16,9 @@ public interface VOBodega {
 	 * @return  capacidad de la bodega 
 	 */
 	
-	public double getCapacidadBodega();
+	public double getVolumenBodega();
 	
+	public double getPesoBodega();
 	/**
 	 * @return id de la bodega
 	 */

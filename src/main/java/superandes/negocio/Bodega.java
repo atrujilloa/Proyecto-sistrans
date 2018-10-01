@@ -16,7 +16,9 @@ public class Bodega implements VOBodega{
 	 * Capacidad de la bodega
 	 */
 
-	private double capacidadBodega;
+	private double pesoBodega;
+	
+	private double volumenBodega;
 
 	//---------------------------- Asociaciones -----------------------------//
 
@@ -31,16 +33,18 @@ public class Bodega implements VOBodega{
 	//---------------------------- Constructor -----------------------------//
 
 	public Bodega() {
-		this.capacidadBodega = 0;
+		this.pesoBodega = 0;
+		this.volumenBodega = 0;
 		this.idCategoria = "";
 		this.idBodega = "";
 		this.idSucursal = "";
 	}
 
-	public Bodega( String idCategoria, double capacidad, String idBodega, String idSucursal)
+	public Bodega( String idCategoria, double peso, double volumen, String idBodega, String idSucursal)
 	{
 		this.idCategoria = idCategoria;
-		this.capacidadBodega =capacidad;
+		this.pesoBodega = peso;
+		this.volumenBodega = volumen;
 		this.idBodega = idBodega;
 		this.idSucursal = idSucursal;
 	}
@@ -58,16 +62,25 @@ public class Bodega implements VOBodega{
 	}
 
 	@Override
-	public double getCapacidadBodega() {
+	public double getVolumenBodega() {
 		// TODO Auto-generated method stub
-		return capacidadBodega;
+		return volumenBodega;
 	}
 
-	public void setCapacidad(double capacidad)
+	public void setVolumenBodega(double vol)
 	{
-		this.capacidadBodega = capacidad;
+		this.volumenBodega = vol;
+	}
+	
+	@Override 
+	public double getPesoBodega() {
+	return pesoBodega;	
 	}
 
+	
+	public void setPesoBodega(double peso) {
+		pesoBodega = peso;
+	}
 	@Override
 	public String getIdBodega() {
 		// TODO Auto-generated method stub
@@ -93,7 +106,7 @@ public class Bodega implements VOBodega{
 	@Override
 
 	public String toString() {
-		return "Bodega [idCategoria=" + idCategoria + ", capacidadBodega=" + capacidadBodega + ", idBodega=" + idBodega + ", idSucural=" + idSucursal + "]";
+		return "Bodega [idCategoria=" + idCategoria + ", pesoBodega=" + pesoBodega+ ", volumenBodega="+volumenBodega + ", idBodega=" + idBodega + ", idSucural=" + idSucursal + "]";
 
 	}
 }
