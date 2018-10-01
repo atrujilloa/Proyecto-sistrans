@@ -13,6 +13,9 @@ public class Estante implements VOEstante{
 	 */
 	private int nivelAbastecimiento;
 	
+	private double volumen;
+	
+	private double peso;
 	
 	//---------------------------- Asociaciones -----------------------------//
 	private String idCategoria;
@@ -22,13 +25,17 @@ public class Estante implements VOEstante{
 
 	public Estante() {
 		this.nivelAbastecimiento = 0;
+		this.peso = 0;
+		this.volumen = 0;
 		this.idSucursal = "";
 		this.idEstante ="";
 	}
 	
-	public Estante(int nivelAbastecimiento, String idSucursal, String idEstante)
+	public Estante(int nivelAbastecimiento, String idSucursal, String idEstante, double peso, double volumen)
 	{
 		this.nivelAbastecimiento = nivelAbastecimiento;
+		this.peso = peso;
+		this.volumen = volumen;
 		this.idSucursal = idSucursal;
 		this.idEstante = idEstante;
 	}
@@ -79,6 +86,29 @@ public class Estante implements VOEstante{
 	
 	public String toString()
 	{
-		return "Estante [ id =" + idEstante + "nivel abastecimiento" + nivelAbastecimiento + "id categoria" + idCategoria + "id sucursal" + idSucursal + "]";
+		return "Estante [ id =" + idEstante + "nivel abastecimiento" + nivelAbastecimiento + "id categoria" + idCategoria + "id sucursal" + idSucursal + "peso" + peso + 
+				" volumen" + volumen + "]";
+	}
+
+	@Override
+	public double getPeso() {
+		// TODO Auto-generated method stub
+		return peso;
+	}
+	
+	public void setPeso( double peso)
+	{
+		this.peso = peso;
+	}
+
+	@Override
+	public double getVolumen() {
+		// TODO Auto-generated method stub
+		return volumen;
+	}
+	
+	public void setVolumen(double volumen)
+	{
+		this.volumen = volumen;
 	}
 }
