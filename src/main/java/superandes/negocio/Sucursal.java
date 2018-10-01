@@ -21,6 +21,8 @@ public class Sucursal implements VOSucursal{
 	
 	private double nivelReorden;
 	
+	//---------------------------- Asociaciones -----------------------------//
+	
 	private LinkedList<String> idProveedores;
 	
 	/**
@@ -29,6 +31,7 @@ public class Sucursal implements VOSucursal{
 	
 	private String idSupermercado;
 
+	//---------------------------- Constructor -----------------------------//
 	public Sucursal() {
 		this.idSucursal = "";
 		this.tamañoInstalacion = "";
@@ -44,7 +47,7 @@ public class Sucursal implements VOSucursal{
 		this.idProveedores = proveedor;
 	}
 	
-	
+	//--------------------------------- Métodos -------------------------------------//
 	@Override
 	public String getIdSucursal() {
 		// TODO Auto-generated method stub

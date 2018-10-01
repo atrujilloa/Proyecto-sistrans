@@ -60,14 +60,21 @@ public class Producto implements VOProducto {
 	
 	private String codigoBarras;
 	
+	private Date fechaVencimiento;
+	
+	//---------------------------- Asociaciones -----------------------------//
 	/**
 	 * identificador de la sucursal en la cual se encuentra el producto
 	 */
 	private String idSucursal;
 	
-	private Date fechaVencimiento;
+	private String idEstante;
 	
-	//Métodos//
+	private String idBodega;
+
+	
+	//---------------------------- Constructor -----------------------------//
+
 	public Producto()
 	{ 
 		this.nombre = "";
@@ -96,6 +103,7 @@ public class Producto implements VOProducto {
 		this.fechaVencimiento = fecha;
 	}
 
+	//--------------------------------- Métodos -------------------------------------//
 	@Override
 	public String getNombre() {
 		// TODO Auto-generated method stub

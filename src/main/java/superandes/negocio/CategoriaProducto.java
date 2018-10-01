@@ -9,6 +9,8 @@ public class CategoriaProducto implements VOCategoriaProducto{
 	
 	private String idCategoria;
 
+	//---------------------------- Constructor -----------------------------//
+
 	public  CategoriaProducto() {
 		this.idCategoria = "";
 	}
@@ -18,6 +20,7 @@ public class CategoriaProducto implements VOCategoriaProducto{
 		this.idCategoria = idCategoria;
 	}
 	
+	//--------------------------------- Métodos -------------------------------------//
 	@Override
 	public String getIdCategoria() {
 		// TODO Auto-generated method stub

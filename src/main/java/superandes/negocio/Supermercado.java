@@ -13,6 +13,7 @@ public class Supermercado implements VOSupermercado {
 	
 	private String idSupermercado;
 
+	//---------------------------- Constructor -----------------------------//
 	
 	public Supermercado() {
 		this.idSupermercado = "";
@@ -21,10 +22,9 @@ public class Supermercado implements VOSupermercado {
 	public Supermercado(String idSupermercado)
 	{
 		this.idSupermercado = idSupermercado;
-	}
+	}	
 	
-	
-	
+	//--------------------------------- Métodos -------------------------------------//
 	@Override
 	public String getIdSupermercado() {
 		// TODO Auto-generated method stub

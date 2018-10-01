@@ -7,19 +7,18 @@ public class Estante implements VOEstante{
 	 * Atributos
 	 ***********************************************************/
 	
+	private String idEstante;
 	/**
 	 * Nivel abastecimiento estante 
 	 */
 	private int nivelAbastecimiento;
 	
-	/**
-	 * 
-	 */
 	
+	//---------------------------- Asociaciones -----------------------------//
 	private String idCategoria;
 	private String idSucursal;
 	
-	private String idEstante;
+	//---------------------------- Constructor -----------------------------//
 
 	public Estante() {
 		this.nivelAbastecimiento = 0;
@@ -34,6 +33,7 @@ public class Estante implements VOEstante{
 		this.idEstante = idEstante;
 	}
 	
+	//--------------------------------- Métodos -------------------------------------//
 	@Override
 	public int getNivelAbastecimiento() {
 		// TODO Auto-generated method stub

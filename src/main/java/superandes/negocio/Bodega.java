@@ -1,36 +1,34 @@
 package superandes.negocio;
 
 public class Bodega implements VOBodega{
-	
-	
+
+
 	/* ***************************************************************
 	 * Atributos
 	 *****************************************************************/
-	
-	
-	
-	/**
-	 * id categoria producto
-	 */
-	
-	private String idCategoria;
-
-	
-	/**
-	 * Capacidad de la bodega
-	 */
-	
-	private double capacidadBodega;
-	
 	/**
 	 * id de la bodega
 	 */
-	
+
 	private String idBodega;
-	
-	
+
+	/**
+	 * Capacidad de la bodega
+	 */
+
+	private double capacidadBodega;
+
+	//---------------------------- Asociaciones -----------------------------//
+
 	private String idSucursal;
 
+	/**
+	 * id categoria producto
+	 */
+
+	private String idCategoria;
+
+	//---------------------------- Constructor -----------------------------//
 
 	public Bodega() {
 		this.capacidadBodega = 0;
@@ -38,7 +36,7 @@ public class Bodega implements VOBodega{
 		this.idBodega = "";
 		this.idSucursal = "";
 	}
-	
+
 	public Bodega( String idCategoria, double capacidad, String idBodega, String idSucursal)
 	{
 		this.idCategoria = idCategoria;
@@ -46,7 +44,8 @@ public class Bodega implements VOBodega{
 		this.idBodega = idBodega;
 		this.idSucursal = idSucursal;
 	}
-	
+
+	//--------------------------------- Métodos -------------------------------------//
 	@Override
 	public String getIdCategoria() {
 		// TODO Auto-generated method stub
@@ -57,7 +56,7 @@ public class Bodega implements VOBodega{
 	{
 		this.idCategoria = id;
 	}
-	
+
 	@Override
 	public double getCapacidadBodega() {
 		// TODO Auto-generated method stub
@@ -79,20 +78,20 @@ public class Bodega implements VOBodega{
 	{
 		this.idBodega = id;
 	}
-	
+
 	@Override
 	public String getIdSucursal() {
 		// TODO Auto-generated method stub
 		return idSucursal;
 	}
-	
+
 	public void setIdSucursal(String id)
 	{
 		this.idSucursal = id;
 	}
-	
+
 	@Override
-	
+
 	public String toString() {
 		return "Bodega [idCategoria=" + idCategoria + ", capacidadBodega=" + capacidadBodega + ", idBodega=" + idBodega + ", idSucural=" + idSucursal + "]";
 

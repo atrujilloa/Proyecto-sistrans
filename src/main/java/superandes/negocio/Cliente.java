@@ -42,8 +42,12 @@ public class Cliente implements VOCliente {
 	
 	private String tipoCliente;
 	
+	//---------------------------- Asociaciones -----------------------------//
+
 	private String idSupermercado;
 	
+	//---------------------------- Constructor -----------------------------//
+
 	public Cliente() {
 		this.documentoIdentificacion = 0;
 		this.NIT = 0;
@@ -63,6 +67,7 @@ public class Cliente implements VOCliente {
 		this.idSupermercado = idSupermercado;
 	}
 	
+	//--------------------------------- Métodos -------------------------------------//
 	@Override
 	public int getId() {
 		// TODO Auto-generated method stub

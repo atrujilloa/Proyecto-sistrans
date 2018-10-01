@@ -26,6 +26,8 @@ public class Proveedor implements VOProveedor{
 	
 	private double calificacionCalidad;
 	
+	//---------------------------- Asociaciones -----------------------------//
+	
 	/**
 	 * Id productos que provee el identificador
 	 */
@@ -33,6 +35,8 @@ public class Proveedor implements VOProveedor{
 	private LinkedList<String> idProductos;
 	
 	private String idSupermercado;
+
+	//---------------------------- Constructor -----------------------------//
 
 	public Proveedor() {
 		this.NIT = 0;
@@ -51,6 +55,7 @@ public class Proveedor implements VOProveedor{
 		this.idSupermercado = idSupermercado;
 	}
 	
+	//--------------------------------- Métodos -------------------------------------//
 	@Override
 	public int getNIT() {
 		// TODO Auto-generated method stub
