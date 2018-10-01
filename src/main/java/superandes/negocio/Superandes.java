@@ -64,4 +64,8 @@ public class Superandes {
 	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
 	 */
 	
+	public Producto registrarProducto()
+	{
+		
+	}
 }
