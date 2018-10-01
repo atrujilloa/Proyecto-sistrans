@@ -16,6 +16,7 @@ public class PersistenciaSuperandes {
 	public void cerrarUnidadPersistencia() {
 		// TODO Auto-generated method stub
 		
+	     cerrarUnidadPersistencia();
 	}
 
 }
