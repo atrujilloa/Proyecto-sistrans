@@ -89,7 +89,7 @@ public class Producto implements VOProducto {
 		this.fechaVencimiento = new Date(0);
 	}
 	
-	public Producto(String nombre, String marca, double precioUnitario, double precioUnidad, String unidad, double volumen, double peso, String codigo, String sucursal, Date fecha)
+	public Producto(String nombre, String marca, double precioUnitario, double precioUnidad, String unidad, double volumen, double peso, String codigo, String sucursal, Date fecha, String idEstante, String idBodega)
 	{
 		this.nombre = nombre;
 		this.marca = marca;
@@ -101,6 +101,8 @@ public class Producto implements VOProducto {
 		this.codigoBarras = codigo;
 		this.idSucursal = sucursal;
 		this.fechaVencimiento = fecha;
+		this.idEstante = idEstante;
+		this.idBodega = idBodega;
 	}
 
 	//--------------------------------- Métodos -------------------------------------//
@@ -203,10 +205,33 @@ public class Producto implements VOProducto {
 		this.fechaVencimiento = fecha;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return "Producto [ nombre =" + nombre + "marca" + "precio unitario" + precioUnitario + "precio unidad" + precioUnidadMedida + "unidad medida" + unidadMed + "volumen del empaque" + volumenEmpaque + "peso empaque" + pesoEmpaque
 				+ "codigo de barras" + codigoBarras + "id sucursal" + idSucursal + "]";
+	}
+
+	@Override
+	public String getIdEstante() {
+		// TODO Auto-generated method stub
+		return idEstante;
+	}
+
+	public void setIdEstante( String id)
+	{
+		this.idEstante = id;
+	}
+	
+	@Override
+	public String getIdBodega() {
+		// TODO Auto-generated method stub
+		return idBodega;
+	}
+	
+	public void setIdBodega(String id)
+	{
+		this.idBodega = id;
 	}
 	
 	

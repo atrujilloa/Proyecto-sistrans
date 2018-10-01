@@ -26,4 +26,8 @@ public interface VOProducto {
 	
 	public Date getFechaVencimiento();
 	
+	public String getIdEstante();
+	
+	public String getIdBodega();
+	
 }
