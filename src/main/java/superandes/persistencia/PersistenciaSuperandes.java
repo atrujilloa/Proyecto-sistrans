@@ -6,9 +6,11 @@ import com.google.gson.JsonObject;
 
 import java.util.LinkedList;
 import java.util.List;
+
 import java.sql.Timestamp;
 
 import javax.jdo.JDOHelper;
+
 import javax.jdo.PersistenceManagerFactory;
 
 
@@ -42,6 +44,8 @@ public class PersistenciaSuperandes {
 	
 	private SQLEstante sqlEstante;
 	
+	private SQLPedido sqlPedido;
+	
 	private SQLProducto sqlProducto;
 	
 	private SQLProveedor sqlProveedor;
@@ -68,6 +72,7 @@ public class PersistenciaSuperandes {
 		tablas.add("BODEGA");
 		tablas.add("CLIENTE");
 		tablas.add("ESTANTE");
+		tablas.add("PEDIDO");
 		tablas.add("PRODUCTO");
 		tablas.add("CATEGORIAPRODUCTO");
 		tablas.add("PROVEEDOR");
@@ -118,13 +123,12 @@ public class PersistenciaSuperandes {
 		sqlCategoriaProducto = new SQLCategoriaProducto(this);
 		sqlCliente = new SQLCliente(this);
 		sqlEstante = new SQLEstante(this);
+		sqlPedido = new SQLPedido(this);
 		sqlProducto = new SQLProducto(this);
 		sqlProveedor = new SQLProveedor(this);
 		sqlSucursal = new SQLSucursal(this);
 		sqlSupermercado = new SQLSupermercado(this);
 		sqlUtil = new SQLUtil(this);
-		
-		
 	}
 
 	public String darTablaBodega() {
@@ -139,24 +143,28 @@ public class PersistenciaSuperandes {
 		return tablas.get(3);
 	}
 	
-	public String darTablaProducto() {
+	public String darTablaPedido(){
 		return tablas.get(4);
 	}
 	
-	public String darTablaCategoriaProducto() {
+	public String darTablaProducto() {
 		return tablas.get(5);
 	}
 	
-	public String darTablaProveedor() {
+	public String darTablaCategoriaProducto() {
 		return tablas.get(6);
 	}
 	
-	public String darTablaSucursal() {
+	public String darTablaProveedor() {
 		return tablas.get(7);
 	}
 	
-	public String darTablaSupermercado() {
+	public String darTablaSucursal() {
 		return tablas.get(8);
+	}
+	
+	public String darTablaSupermercado() {
+		return tablas.get(9);
 	}
 	
 	

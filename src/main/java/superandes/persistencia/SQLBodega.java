@@ -8,6 +8,7 @@ import superandes.negocio.Bodega;
 
 public class SQLBodega {
 
+
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -55,6 +56,7 @@ public class SQLBodega {
         q.setParameters(idBar, nombre, ciudad, presupuesto, sedes);
         return (long) q.executeUnique();
 	}
+
 	
 	
 	/**
