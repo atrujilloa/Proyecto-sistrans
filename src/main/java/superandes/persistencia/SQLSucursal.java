@@ -7,6 +7,7 @@ import java.util.LinkedList;
 
 import superandes.negocio.Bodega;
 import superandes.negocio.Sucursal;
+import superandes.negocio.Supermercado;
 
 public class SQLSucursal {
 
@@ -51,9 +52,6 @@ public class SQLSucursal {
 	 * @return El número de tuplas insertadas
 	 */
 	
-	
-	
-	
 	public long adicionarSucursal (PersistenceManager pm, String idSucursal, double tamañoInstalacion, double nivelReorden, LinkedList<String> idProveedores, String idSupermercado) 
 	{
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaSucursal () + "(idSucursal, tamañoInstalacion, nivelReorden, idProveedores, idSupermercado) values (?, ?, ?, ?, ?)");
@@ -90,4 +88,18 @@ public class SQLSucursal {
 		return (List<Sucursal>) q.executeList();
 	}
 	
+	/**
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de UNA SUCURSAL de la 
+	 * base de datos de Parranderos, por su identificador
+	 * @param pm - El manejador de persistencia
+	 * @param idSucursal - El identificador de la sucursal
+	 * @return El objeto Sucursal que tiene el identificador dado
+	 */
+	public Sucursal darSupermercadoPorId (PersistenceManager pm, long idSucursal) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaSucursal() + " WHERE id = ?");
+		q.setResultClass(Supermercado.class);
+		q.setParameters(idSucursal);
+		return (Sucursal) q.executeUnique();
+	}
 }

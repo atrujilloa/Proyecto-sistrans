@@ -39,12 +39,13 @@ public class Sucursal implements VOSucursal{
 		idProveedores = new LinkedList<>();
 	}
 	
-	public Sucursal(String idSucursal, double tamano, double nivelReorden, LinkedList<String> proveedor)
+	public Sucursal(String idSucursal, double tamano, double nivelReorden, LinkedList<String> proveedor,String idSupermercad)
 	{
 		this.idSucursal = idSucursal;
 		this.tamañoInstalacion = tamano;
 		this.nivelReorden = nivelReorden;
 		this.idProveedores = proveedor;
+		this.idSupermercado = idSupermercad;
 	}
 	
 	//--------------------------------- Métodos -------------------------------------//

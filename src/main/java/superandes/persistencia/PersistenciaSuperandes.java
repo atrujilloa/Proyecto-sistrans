@@ -6,6 +6,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import superandes.negocio.Sucursal;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,8 +15,9 @@ import java.sql.Timestamp;
 
 import javax.jdo.JDODataStoreException;
 import javax.jdo.JDOHelper;
-
+import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Transaction;
 
 
 public class PersistenciaSuperandes {
@@ -33,6 +36,8 @@ public class PersistenciaSuperandes {
 	public final static String SQL = "javax.jdo.query.SQL";
 
 
+	private int numSucursal;
+	
 	private static PersistenciaSuperandes instance;
 
 	private PersistenceManagerFactory pmf;
@@ -73,6 +78,8 @@ public class PersistenciaSuperandes {
 	 */
 
 	public PersistenciaSuperandes( ) {
+		
+		numSucursal = 0;
 
 		pmf = JDOHelper.getPersistenceManagerFactory("Superandes");
 		crearClasesSQL();
@@ -247,6 +254,57 @@ private String darDetalleException(Exception e)
 /* ****************************************************************
  * 			Métodos para manejar los SUCURSAL
  *****************************************************************/
+
+/**
+ * Método que inserta, de manera transaccional, una tupla en la tabla SUCURSAL
+ * Adiciona entradas al log de la aplicación
+ * @param tamañoInstalacion - tamaño de la bodega 
+ * @param nivelReorden - nivel reorden de la sucursal
+ * @param idProveedores - proveedores de la sucursal
+ * @param idSupermercado - supermercado al cual pertenece la sucursal 
+ * @return El objeto BEBEDOR adicionado. null si ocurre alguna Excepción
+ */
+public Sucursal adicionarSucursal(double tamañoInstalacion, double nivelReorden, LinkedList<String> idProveedores, String idSupermercado) 
+{
+	PersistenceManager pm = pmf.getPersistenceManager();
+    Transaction tx=pm.currentTransaction();
+    try
+    {
+        tx.begin();
+        String idSucursal = ""+numSucursal++;
+        long tuplasInsertadas = sqlSucursal.adicionarSucursal(pmf.getPersistenceManager(), idSucursal, tamañoInstalacion,nivelReorden, idProveedores, idSupermercado);
+        tx.commit();
+
+        log.trace ("Inserción de la sucursal: " + idSucursal + ": " + tuplasInsertadas + " tuplas insertadas");
+        
+        return new Sucursal (""+idSucursal, tamañoInstalacion, nivelReorden, idProveedores, idSupermercado);
+    }
+    catch (Exception e)
+    {
+//    	e.printStackTrace();
+    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+    	return null;
+    }
+    finally
+    {
+        if (tx.isActive())
+        {
+            tx.rollback();
+        }
+        pm.close();
+    }
+}
+
+
+/**
+ * Método que consulta todas las tuplas en la tabla SUCURSAL que tienen el identificador dado
+ * @param idSucursal - El identificador del bebedor
+ * @return El objeto BEBEDOR, construido con base en la tuplas de la tabla BEBEDOR, que tiene el identificador dado
+ */
+public Sucursal darSucursalPorId (int idSucursal) 
+{
+	return (Sucursal) sqlSucursal.darSucursalPorId (pmf.getPersistenceManager(), ""+idSucursal);
+}
 /* ****************************************************************
  * 			Métodos para manejar los SUPERMERCADO
  *****************************************************************/
