@@ -4,11 +4,11 @@ import java.util.LinkedList;
 
 public interface VOSucursal {
 
-	public String getIdSucursal();
+	public long getIdSucursal();
 	
 	public double getTamañoInstalacion();
 	
-	public String getIdSupermercado();
+	public long getIdSupermercado();
 	
 	public double getNivelReorden();
 	

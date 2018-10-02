@@ -16,16 +16,17 @@ public class SQLEstante {
 		this.ps = ps;
 	}
 	
-	public long registrarEstante(PersistenceManager pm, String id, int nivelAbastecimiento, double volumen, double peso, String idCategoria, String idSucursal)
+	public long registrarEstante(PersistenceManager pm, long id, int nivelAbastecimiento, double volumen, double peso, String categoria, String idSucursal)
 	{
-		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaEstante() + "(id, nivelAbastecimiento, volumen, peso, idCategoria, idSucursal) values (?,?,?,?,?,?)");
-		q.setParameters(id, nivelAbastecimiento, volumen, peso, idCategoria, idSucursal);
+		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaEstante() + "(id, nivelAbastecimiento, volumen, peso, categoria, idSucursal) values (?,?,?,?,?,?)");
+		q.setParameters(id, nivelAbastecimiento, volumen, peso, categoria, idSucursal);
 		return (long) q.executeUnique();
 	}
 	
-	public long eliminarEstante(PersistenceManager pm)
+	public long eliminarEstante(PersistenceManager pm, long idSucursal)
 	{
-		Query q = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaEstante());
+		Query q = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaEstante() + "WHERE idSucursal = ?");
+		q.setParameters(idSucursal);
 		return (long) q.executeUnique();
 	}
 

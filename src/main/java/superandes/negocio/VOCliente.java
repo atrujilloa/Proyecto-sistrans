@@ -7,8 +7,9 @@ public interface VOCliente {
 	 * Metodos
 	 ********************************************/
 	
+	public long getId();
 	
-	public int getId();
+	public int getDocumento();
 	
 	public int getNIT();
 	

@@ -31,14 +31,14 @@ public class Pedido implements VOPedido{
 		this.idProveedores = new LinkedList<String>();
 	}
 	
-	public Pedido(String id, Date fechaPedido, Date fechaLlegada ,String idSucursal, LinkedList<String> idProductos, LinkedList<String> idProveedores)
+	public Pedido(String id, Date fechaPedido, Date fechaLlegada ,String idSucursal)
 	{
 		this.idPedido = id;
 		this.fechaPedido = fechaPedido;
 		this.fechaLLegada = fechaLlegada;
 		this.idSucursal = idSucursal;
-		this.idProductos = idProductos;
-		this.idProveedores = idProveedores;
+		idProductos = new LinkedList<>();
+		idProveedores = new LinkedList<>();
 	}
 	
 	//--------------------------------- Métodos -------------------------------------//

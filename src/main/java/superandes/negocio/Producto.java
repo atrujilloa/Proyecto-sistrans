@@ -1,6 +1,6 @@
 package superandes.negocio;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Producto implements VOProducto {
 
@@ -66,11 +66,11 @@ public class Producto implements VOProducto {
 	/**
 	 * identificador de la sucursal en la cual se encuentra el producto
 	 */
-	private String idSucursal;
+	private long idSucursal;
 	
-	private String idEstante;
+	private long idEstante;
 	
-	private String idBodega;
+	private long idBodega;
 
 	
 	//---------------------------- Constructor -----------------------------//
@@ -85,11 +85,13 @@ public class Producto implements VOProducto {
 		this.volumenEmpaque = 0;
 		this.pesoEmpaque = 0;
 		this.codigoBarras = "";
-		this.idSucursal = "";
+		this.idSucursal = 0;
+		this.idEstante = 0;
+		this.idBodega = 0;
 		this.fechaVencimiento = new Date(0);
 	}
 	
-	public Producto(String nombre, String marca, double precioUnitario, double precioUnidad, String unidad, double volumen, double peso, String codigo, String sucursal, Date fecha, String idEstante, String idBodega)
+	public Producto(String nombre, String marca, double precioUnitario, double precioUnidad, String unidad, double volumen, double peso, String codigo,  Date fechaVencimiento2, long sucursal, long idEstante, long idBodega)
 	{
 		this.nombre = nombre;
 		this.marca = marca;
@@ -100,7 +102,7 @@ public class Producto implements VOProducto {
 		this.pesoEmpaque = peso;
 		this.codigoBarras = codigo;
 		this.idSucursal = sucursal;
-		this.fechaVencimiento = fecha;
+		this.fechaVencimiento = fechaVencimiento2;
 		this.idEstante = idEstante;
 		this.idBodega = idBodega;
 	}
@@ -184,12 +186,12 @@ public class Producto implements VOProducto {
 	}
 	
 	@Override
-	public String getIdSucursal() {
+	public long getIdSucursal() {
 		// TODO Auto-generated method stub
 		return idSucursal;
 	}
 
-	public void setIdSucursal(String id)
+	public void setIdSucursal(long id)
 	{
 		this.idSucursal = id;
 	}
@@ -213,23 +215,23 @@ public class Producto implements VOProducto {
 	}
 
 	@Override
-	public String getIdEstante() {
+	public long getIdEstante() {
 		// TODO Auto-generated method stub
 		return idEstante;
 	}
 
-	public void setIdEstante( String id)
+	public void setIdEstante( long id)
 	{
 		this.idEstante = id;
 	}
 	
 	@Override
-	public String getIdBodega() {
+	public long getIdBodega() {
 		// TODO Auto-generated method stub
 		return idBodega;
 	}
 	
-	public void setIdBodega(String id)
+	public void setIdBodega(long id)
 	{
 		this.idBodega = id;
 	}

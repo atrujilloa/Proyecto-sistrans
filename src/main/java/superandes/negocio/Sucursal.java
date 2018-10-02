@@ -12,7 +12,7 @@ public class Sucursal implements VOSucursal{
 	 * id de la sucursal
 	 */
 	
-	private String idSucursal;
+	private long idSucursal;
 	
 	/**
 	 * tamaño instalacion
@@ -29,33 +29,34 @@ public class Sucursal implements VOSucursal{
 	 * id del supermercado al que pertenecen
 	 */
 	
-	private String idSupermercado;
+	private long idSupermercado;
 
 	//---------------------------- Constructor -----------------------------//
 	public Sucursal() {
-		this.idSucursal = "";
+		this.idSucursal = 0;
 		this.tamañoInstalacion = 0;
 		this.nivelReorden = 0;
-		idProveedores = new LinkedList<>();
+		this.idSupermercado = 0;
 	}
+
 	
-	public Sucursal(String idSucursal, double tamano, double nivelReorden, LinkedList<String> proveedor,String idSupermercad)
+	public Sucursal(long idSucursal, double tamano, double nivelReorden, long sup)
 	{
 		this.idSucursal = idSucursal;
 		this.tamañoInstalacion = tamano;
 		this.nivelReorden = nivelReorden;
-		this.idProveedores = proveedor;
-		this.idSupermercado = idSupermercad;
+		this.idProveedores = new LinkedList<String>();
+		this.idSupermercado = sup;
 	}
 	
 	//--------------------------------- Métodos -------------------------------------//
 	@Override
-	public String getIdSucursal() {
+	public long getIdSucursal() {
 		// TODO Auto-generated method stub
 		return idSucursal;
 	}
 
-	public void setIdSucursal(String ids) {
+	public void setIdSucursal(long ids) {
 		
 		idSucursal = ids;
 	}
@@ -70,12 +71,12 @@ public class Sucursal implements VOSucursal{
 	}
 
 	@Override
-	public String getIdSupermercado() {
+	public long getIdSupermercado() {
 		// TODO Auto-generated method stub
 		return idSupermercado;
 	}
 
-	public void seIdSupermercado(String idS) {
+	public void seIdSupermercado(long idS) {
 		
 		idSupermercado = idS;
 	}

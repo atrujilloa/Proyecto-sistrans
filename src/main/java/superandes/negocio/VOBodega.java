@@ -10,7 +10,7 @@ public interface VOBodega {
 	 * @return  id de la categoria
 	 */
 	
-	public String getIdCategoria();
+	public String getCategoria();
 	
 	/**
 	 * @return  capacidad de la bodega 
@@ -22,9 +22,9 @@ public interface VOBodega {
 	/**
 	 * @return id de la bodega
 	 */
-	public String getIdBodega();
+	public long getIdBodega();
 	
-	public String getIdSucursal();
+	public long getIdSucursal();
 	
 	@Override
 	public String toString();
