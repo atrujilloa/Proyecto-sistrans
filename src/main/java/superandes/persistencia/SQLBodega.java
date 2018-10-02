@@ -1,5 +1,11 @@
 package superandes.persistencia;
 
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
+import java.util.List;
+
+import superandes.negocio.Bodega;
+
 public class SQLBodega {
 
 	/* ****************************************************************
@@ -43,10 +49,43 @@ public class SQLBodega {
 	 * @return El número de tuplas insertadas
 	 */
 	
-	public long adicionarBar (PersistenceManager pm, long idBar, String nombre, String ciudad, String presupuesto, int sedes) 
+	public long adicionarBar (PersistenceManager pm, String idBar, String nombre, String ciudad, String presupuesto, int sedes) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaBar () + "(id, nombre, ciudad, presupuesto, cantsedes) values (?, ?, ?, ?, ?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaBodega () + "(idBodega, pesoBodega, volumenBodega, idSucursal, idCategoria) values (?, ?, ?, ?, ?)");
         q.setParameters(idBar, nombre, ciudad, presupuesto, sedes);
         return (long) q.executeUnique();
 	}
+	
+	
+	/**
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de una bodepa  
+	 * base de datos de Superandes, por su identificador
+	 * @param pm - El manejador de persistencia
+	 * @param idBodega - El identificador de la bodega
+	 * @return El objeto Bodega que tiene el identificador dado
+	 */
+	public Bodega darBodegaPorId (PersistenceManager pm, String idBodega) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBodega () + " WHERE idBodega = ?");
+		q.setResultClass(Bodega.class);
+		q.setParameters(idBodega);
+		return (Bodega) q.executeUnique();
+	}
+	
+	/**
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de Las bodegas de la 
+	 * base de datos de Superandes
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de objetos Bar
+	 */
+	public List<Bodega> darBodega (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBodega ());
+		q.setResultClass(Bodega.class);
+		return (List<Bodega>) q.executeList();
+	}
+	
+	
 }
+
+
