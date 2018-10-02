@@ -1,5 +1,10 @@
 package superandes.persistencia;
 
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
+
+import oracle.net.aso.t;
+
 public class SQLUtil {
 	
 	private final static String SQL = PersistenciaSuperandes.SQL;
@@ -12,6 +17,37 @@ public class SQLUtil {
 		this.ps = ps;
 	}
 	
+	public long nextval(PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT " + ps.darSeqSuperandes() + ".nextval FROM DUAL");
+		q.setResultClass(Long.class);
+		long resp = (long) q.executeUnique();
+		return resp;
+	}
 	
+	public long[] limpiarSuperandes(PersistenceManager pm)
+	{
+		Query qBodega = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaBodega());
+		Query qCategoriaProducto = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaCategoriaProducto());
+		Query qCliente = pm.newQuery(SQL, "DELETE FORM " + ps.darTablaCliente());
+		Query qEstante = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaEstante());
+		Query qPedido = pm.newQuery(SQL, "DLET FROM " + ps.darTablaPedido());
+		Query qProducto = pm.newQuery(SQL, "DLEETE FROM " + ps.darTablaProducto());
+		Query qProveedor = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaProveedor());
+		Query qSucursal = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaSucursal());
+		Query qSupermercado = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaSupermercado());
+		
+		long bodegaEliminado = (long) qBodega.executeUnique();
+		long categoriaEliminado = (long) qCategoriaProducto.executeUnique();
+		long clienteEliminado = (long) qCliente.executeUnique();
+		long estanteEliminado = (long) qEstante.executeUnique();
+		long pedidoEliminado = (long) qPedido.executeUnique();
+		long productoEliminado = (long) qProducto.executeUnique();
+		long proveedorEliminado = (long) qProveedor.executeUnique();
+		long sucursalEliminado = (long)qSucursal.executeUnique();
+		long supermercadoEliminado = (long)qSupermercado.executeUnique();
+		
+		return new long[] {bodegaEliminado, categoriaEliminado, clienteEliminado, estanteEliminado, pedidoEliminado, productoEliminado, proveedorEliminado, sucursalEliminado, supermercadoEliminado};
+	}
 
 }
