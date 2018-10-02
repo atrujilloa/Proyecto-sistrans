@@ -22,12 +22,7 @@ public interface VOProducto {
 	
 	public String getCodigoBarras();
 	
-	public long getIdSucursal();
-	
 	public Date getFechaVencimiento();
 	
-	public long getIdEstante();
-	
-	public long getIdBodega();
 	
 }

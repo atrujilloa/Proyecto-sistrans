@@ -11,24 +11,29 @@ public class Supermercado implements VOSupermercado {
 	 * id supermercado
 	 */
 	
-	private String idSupermercado;
+	private long idSupermercado;
 
 	//---------------------------- Constructor -----------------------------//
 	
 	public Supermercado() {
-		this.idSupermercado = "";
+		this.idSupermercado = 0;
 	}
 	
-	public Supermercado(String idSupermercado)
+	public Supermercado(long idSupermercado)
 	{
 		this.idSupermercado = idSupermercado;
 	}	
 	
 	//--------------------------------- Métodos -------------------------------------//
 	@Override
-	public String getIdSupermercado() {
+	public long getIdSupermercado() {
 		// TODO Auto-generated method stub
 		return idSupermercado;
+	}
+	
+	public void setIdSupermercado(long id)
+	{
+		this.idSupermercado = id;
 	}
 	
 	public String toString()

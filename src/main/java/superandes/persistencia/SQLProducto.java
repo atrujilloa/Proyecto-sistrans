@@ -25,10 +25,10 @@ public class SQLProducto {
 		return (long) q.executeUnique();
 	}
 	
-	public long eliminarProducto(PersistenceManager pm, long idSucursal, long idEstante, long idBodega)
+	public long eliminarProducto(PersistenceManager pm, String codigo)
 	{
-		Query q = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaProducto() + "WHERE idSucursal = ? AND idEstante = ? AND idBodega = ?");
-		q.setParameters(idSucursal, idEstante, idBodega);
+		Query q = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaProducto() + "WHERE codigo = ?");
+		q.setParameters(codigo);
 		return (long) q.executeUnique();
 	}
 }

@@ -20,10 +20,10 @@ public class SQLCliente {
 		this.ps = ps;
 	}
 	
-	public long registrarCliente(PersistenceManager pm, long id, int documento, String nombre, int nit, String correo, String direccion, String tipo, String idSupermercado)
+	public long registrarCliente(PersistenceManager pm, long id, int documento, String nombre, int nit, String correo, String direccion, String tipo)
 	{
-		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaCliente() + "(id, documento, nombre, nit, correo, direccion, tipo, idSupermercado) values (?,?,?,?,?,?,?,?)");
-		q.setParameters(id, documento, nombre, nit, correo, direccion, tipo, idSupermercado);
+		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaCliente() + "(id, documento, nombre, nit, correo, direccion, tipo) values (?,?,?,?,?,?,?)");
+		q.setParameters(id, documento, nombre, nit, correo, direccion, tipo);
 		return (long) q.executeUnique();
 	}
 	

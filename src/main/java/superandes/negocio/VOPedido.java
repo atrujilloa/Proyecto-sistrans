@@ -15,6 +15,6 @@ public interface VOPedido {
 	
 	public LinkedList<String> getIdProductos();
 	
-	public LinkedList<String> getIdProveedores();
+	public String getIdProveedor();
 
 }
