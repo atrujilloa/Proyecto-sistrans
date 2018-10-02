@@ -7,7 +7,7 @@ public class Estante implements VOEstante{
 	 * Atributos
 	 ***********************************************************/
 	
-	private String idEstante;
+	private long idEstante;
 	/**
 	 * Nivel abastecimiento estante 
 	 */
@@ -17,8 +17,10 @@ public class Estante implements VOEstante{
 	
 	private double peso;
 	
+	private String categoria;
+	
 	//---------------------------- Asociaciones -----------------------------//
-	private String idCategoria;
+
 	private String idSucursal;
 	
 	//---------------------------- Constructor -----------------------------//
@@ -27,17 +29,19 @@ public class Estante implements VOEstante{
 		this.nivelAbastecimiento = 0;
 		this.peso = 0;
 		this.volumen = 0;
+		this.categoria = "";
 		this.idSucursal = "";
-		this.idEstante ="";
+		this.idEstante = 0;
 	}
 	
-	public Estante(int nivelAbastecimiento, String idSucursal, String idEstante, double peso, double volumen)
+	public Estante(long id,int nivelAbastecimiento , double peso, double volumen, String categoria, String idSucursal)
 	{
 		this.nivelAbastecimiento = nivelAbastecimiento;
 		this.peso = peso;
 		this.volumen = volumen;
+		this.categoria = categoria;
 		this.idSucursal = idSucursal;
-		this.idEstante = idEstante;
+		this.idEstante = id;
 	}
 	
 	//--------------------------------- Métodos -------------------------------------//
@@ -64,30 +68,20 @@ public class Estante implements VOEstante{
 	}
 
 	@Override
-	public String getIdEstante() {
+	public long getIdEstante() {
 		// TODO Auto-generated method stub
 		return idEstante;
 	}
 	
-	public void setIdEstante(String id)
+	public void setIdEstante(long id)
 	{
 		this.idEstante = id;
 	}
 	
-	@Override
-	public String getIdCategoria() {
-		return idCategoria;
-	}
-	
-	public void setIdCategoria( String id)
-	{
-		this.idCategoria = id;
-	}
-	
 	public String toString()
 	{
-		return "Estante [ id =" + idEstante + "nivel abastecimiento" + nivelAbastecimiento + "id categoria" + idCategoria + "id sucursal" + idSucursal + "peso" + peso + 
-				" volumen" + volumen + "]";
+		return "Estante [ id =" + idEstante + "nivel abastecimiento" + nivelAbastecimiento  + "id sucursal" + idSucursal + "peso" + peso + 
+				" volumen" + volumen + "categoria " + categoria +  "]";
 	}
 
 	@Override
@@ -110,5 +104,16 @@ public class Estante implements VOEstante{
 	public void setVolumen(double volumen)
 	{
 		this.volumen = volumen;
+	}
+
+	@Override
+	public String getCategoria() {
+		// TODO Auto-generated method stub
+		return categoria;
+	}
+	
+	public void setCategoria(String categoria)
+	{
+		this.categoria = categoria;
 	}
 }

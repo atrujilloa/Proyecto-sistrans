@@ -12,7 +12,7 @@ public class Sucursal implements VOSucursal{
 	 * id de la sucursal
 	 */
 	
-	private String idSucursal;
+	private long idSucursal;
 	
 	/**
 	 * tamaño instalacion
@@ -33,13 +33,13 @@ public class Sucursal implements VOSucursal{
 
 	//---------------------------- Constructor -----------------------------//
 	public Sucursal() {
-		this.idSucursal = "";
+		this.idSucursal = 0;
 		this.tamañoInstalacion = 0;
 		this.nivelReorden = 0;
 		idProveedores = new LinkedList<>();
 	}
 	
-	public Sucursal(String idSucursal, double tamano, double nivelReorden, LinkedList<String> proveedor)
+	public Sucursal(long idSucursal, double tamano, double nivelReorden, LinkedList<String> proveedor)
 	{
 		this.idSucursal = idSucursal;
 		this.tamañoInstalacion = tamano;
@@ -49,12 +49,12 @@ public class Sucursal implements VOSucursal{
 	
 	//--------------------------------- Métodos -------------------------------------//
 	@Override
-	public String getIdSucursal() {
+	public long getIdSucursal() {
 		// TODO Auto-generated method stub
 		return idSucursal;
 	}
 
-	public void setIdSucursal(String ids) {
+	public void setIdSucursal(long ids) {
 		
 		idSucursal = ids;
 	}

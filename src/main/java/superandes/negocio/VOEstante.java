@@ -10,7 +10,8 @@ public interface VOEstante {
 	
 	public String getIdSucursal();
 	
-	public String getIdEstante();
+	public long getIdEstante();
 	
-	public String getIdCategoria();
+	public String getCategoria();
+	
 }

@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public interface VOSucursal {
 
-	public String getIdSucursal();
+	public long getIdSucursal();
 	
 	public double getTamañoInstalacion();
 	
