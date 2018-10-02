@@ -6,7 +6,7 @@ public interface VOSucursal {
 
 	public String getIdSucursal();
 	
-	public String getTamañoInstalacion();
+	public double getTamañoInstalacion();
 	
 	public String getIdSupermercado();
 	
