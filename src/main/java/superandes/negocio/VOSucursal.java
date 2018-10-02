@@ -8,7 +8,7 @@ public interface VOSucursal {
 	
 	public double getTamañoInstalacion();
 	
-	public String getIdSupermercado();
+	public long getIdSupermercado();
 	
 	public double getNivelReorden();
 	
