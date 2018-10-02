@@ -23,7 +23,7 @@ public class Superandes {
 	/**
 	 * El manejador de persistencia
 	 */
-	private PersistenciaSuperandes pp;
+	private PersistenciaSuperandes ps;
 	
 	/* ****************************************************************
 	 * 			Métodos
@@ -33,7 +33,7 @@ public class Superandes {
 	 */
 	public Superandes ()
 	{
-		pp = PersistenciaSuperandes.getInstance ();
+		ps = PersistenciaSuperandes.getInstance ();
 	}
 	
 	/**
@@ -42,7 +42,7 @@ public class Superandes {
 	 */
 	public Superandes (JsonObject tableConfig)
 	{
-		pp = PersistenciaSuperandes.getInstance (tableConfig);
+		ps = PersistenciaSuperandes.getInstance (tableConfig);
 	}
 	
 	/**
@@ -50,18 +50,50 @@ public class Superandes {
 	 */
 	public void cerrarUnidadPersistencia ()
 	{
-		pp.cerrarUnidadPersistencia ();
+		ps.cerrarUnidadPersistencia ();
 	}
+	
+	/* *************************************************
+	 * Metodos para manejar las bodegas
+	 ***************************************************/
+	
+	/**
+	 * Adiciona de manera persistente una bodega
+	 * Adiciona entradas al log de la aplicación
+	 * @param id- El id de la bodega
+	 * @return El objeto bodega adicionado. null si ocurre alguna Excepción
+	 */
+	
+	/* *************************************************
+	 * Metodos para manejar las categorias de productos
+	 ***************************************************/
+	
+	/* *************************************************
+	 * Metodos para manejar los clientes
+	 ***************************************************/
+	
+	/* *************************************************
+	 * Metodos para manejar los estantes
+	 ***************************************************/
+	
+	/* *************************************************
+	 * Metodos para manejar los pedidos
+	 ***************************************************/
+	
+	/* *************************************************
+	 * Metodos para manejar los productos
+	 ***************************************************/
+	
+	/* *************************************************
+	 * Metodos para manejar los proveedores
+	 ***************************************************/
 	
 	/* *************************************************
 	 * Metodos para manejar las sucursales
 	 ***************************************************/
 	
-	/**
-	 * Adiciona de manera persistente una sucursal 
-	 * Adiciona entradas al log de la aplicación
-	 * @param nombre - El nombre del tipo de bebida
-	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
-	 */
-	
+	/* *************************************************
+	 * Metodos para manejar los supermercados
+	 ***************************************************/
+
 }
