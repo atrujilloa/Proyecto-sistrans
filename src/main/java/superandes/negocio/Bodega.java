@@ -10,7 +10,7 @@ public class Bodega implements VOBodega{
 	 * id de la bodega
 	 */
 
-	private String idBodega;
+	private long idBodega;
 
 	/**
 	 * Capacidad de la bodega
@@ -19,30 +19,26 @@ public class Bodega implements VOBodega{
 	private double pesoBodega;
 	
 	private double volumenBodega;
+	
+	private String categoria;
 
 	//---------------------------- Asociaciones -----------------------------//
 
-	private String idSucursal;
-
-	/**
-	 * id categoria producto
-	 */
-
-	private String idCategoria;
+	private long idSucursal;
 
 	//---------------------------- Constructor -----------------------------//
 
 	public Bodega() {
 		this.pesoBodega = 0;
 		this.volumenBodega = 0;
-		this.idCategoria = "";
-		this.idBodega = "";
-		this.idSucursal = "";
+		this.categoria = "";
+		this.idBodega = 0;
+		this.idSucursal = 0;
 	}
 
-	public Bodega( String idCategoria, double peso, double volumen, String idBodega, String idSucursal)
+	public Bodega( String categoria, double peso, double volumen, long idBodega, long idSucursal)
 	{
-		this.idCategoria = idCategoria;
+		this.categoria = categoria;
 		this.pesoBodega = peso;
 		this.volumenBodega = volumen;
 		this.idBodega = idBodega;
@@ -51,14 +47,14 @@ public class Bodega implements VOBodega{
 
 	//--------------------------------- Métodos -------------------------------------//
 	@Override
-	public String getIdCategoria() {
+	public String getCategoria() {
 		// TODO Auto-generated method stub
-		return idCategoria;
+		return categoria;
 	}
 
-	public void setIdCategoria( String id)
+	public void setCategoria( String id)
 	{
-		this.idCategoria = id;
+		this.categoria = id;
 	}
 
 	@Override
@@ -82,23 +78,23 @@ public class Bodega implements VOBodega{
 		pesoBodega = peso;
 	}
 	@Override
-	public String getIdBodega() {
+	public long getIdBodega() {
 		// TODO Auto-generated method stub
 		return idBodega;
 	}
 
-	public void setIdBodega(String id)
+	public void setIdBodega(long id)
 	{
 		this.idBodega = id;
 	}
 
 	@Override
-	public String getIdSucursal() {
+	public long getIdSucursal() {
 		// TODO Auto-generated method stub
 		return idSucursal;
 	}
 
-	public void setIdSucursal(String id)
+	public void setIdSucursal(long id)
 	{
 		this.idSucursal = id;
 	}
@@ -106,7 +102,7 @@ public class Bodega implements VOBodega{
 	@Override
 
 	public String toString() {
-		return "Bodega [idCategoria=" + idCategoria + ", pesoBodega=" + pesoBodega+ ", volumenBodega="+volumenBodega + ", idBodega=" + idBodega + ", idSucural=" + idSucursal + "]";
+		return "Bodega [categoria=" + categoria + ", pesoBodega=" + pesoBodega+ ", volumenBodega="+volumenBodega + ", idBodega=" + idBodega + ", idSucural=" + idSucursal + "]";
 
 	}
 }

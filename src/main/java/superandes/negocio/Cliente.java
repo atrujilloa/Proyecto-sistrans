@@ -10,9 +10,13 @@ public class Cliente implements VOCliente {
 	/* ******************************************
 	 * Atributos
 	 ********************************************/
+	/**
+	 * Identicación cliente
+	 */
+	private long id;
 	
 	/**
-	 * Numero identificacion cliente 
+	 * Numero documento identificacion cliente 
 	 */
 	private int documentoIdentificacion;
 	
@@ -49,19 +53,23 @@ public class Cliente implements VOCliente {
 	//---------------------------- Constructor -----------------------------//
 
 	public Cliente() {
+		this.id = 0;
 		this.documentoIdentificacion = 0;
 		this.NIT = 0;
 		this.nombre = "";
+		this.correo = "";
 		this.direccion = "";
 		this.tipoCliente = "";
 		this.idSupermercado = "";
 	}
 
-	public Cliente(int documento, int NIT, String nombre, String direccion, String tipo, String idSupermercado)
+	public Cliente(long id, int documento, int NIT, String nombre, String direccion, String correo ,String tipo, String idSupermercado)
 	{
+		this.id = id;
 		this.documentoIdentificacion = documento;
 		this.NIT = NIT;
 		this.nombre = nombre;
+		this.correo = correo;
 		this.direccion = direccion;
 		this.tipoCliente = tipo;
 		this.idSupermercado = idSupermercado;
@@ -69,12 +77,12 @@ public class Cliente implements VOCliente {
 	
 	//--------------------------------- Métodos -------------------------------------//
 	@Override
-	public int getId() {
+	public int getDocumento() {
 		// TODO Auto-generated method stub
 		return documentoIdentificacion;
 	}
 
-	public void setId(int id)
+	public void setDocumento(int id)
 	{
 		this.documentoIdentificacion = id;
 	}
@@ -148,5 +156,16 @@ public class Cliente implements VOCliente {
 	public String toString()
 	{
 		return "Cliente [ id=" + documentoIdentificacion + "nombre" + nombre + "correo" + correo + "dirección" + direccion + "tipo cliente" + tipoCliente + "id supermercado" + idSupermercado + "]";
+	}
+
+	@Override
+	public long getId() {
+		// TODO Auto-generated method stub
+		return id;
+	}
+	
+	public void setId(long id)
+	{
+		this.id = id;
 	}
 }

@@ -1,6 +1,6 @@
 package superandes.negocio;
 
-import java.sql.Date;
+import java.util.Date;
 
 public interface VOProducto {
 	
@@ -22,12 +22,12 @@ public interface VOProducto {
 	
 	public String getCodigoBarras();
 	
-	public String getIdSucursal();
+	public long getIdSucursal();
 	
 	public Date getFechaVencimiento();
 	
-	public String getIdEstante();
+	public long getIdEstante();
 	
-	public String getIdBodega();
+	public long getIdBodega();
 	
 }
