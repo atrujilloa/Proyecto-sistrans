@@ -61,9 +61,6 @@ public class PersistenciaSuperandes {
 	private SQLSucursal sqlSucursal;
 
 	private SQLSupermercado sqlSupermercado;
-
-	private SQLCategoriaProducto sqlCategoriaProducto;
-
 	
 	private SQLPromocion sqlPromocion;
 	
@@ -89,7 +86,6 @@ public class PersistenciaSuperandes {
 		tablas.add("ESTANTE");
 		tablas.add("PEDIDO");
 		tablas.add("PRODUCTO");
-		tablas.add("CATEGORIAPRODUCTO");
 		tablas.add("PROVEEDOR");
 		tablas.add("SUCURSAL");
 		tablas.add("SUPERMERCADO");
@@ -147,7 +143,6 @@ public class PersistenciaSuperandes {
 	private void crearClasesSQL()
 	{
 		sqlBodega = new SQLBodega(this);
-		sqlCategoriaProducto = new SQLCategoriaProducto(this);
 		sqlCliente = new SQLCliente(this);
 		sqlEstante = new SQLEstante(this);
 		sqlPedido = new SQLPedido(this);
@@ -185,25 +180,21 @@ public class PersistenciaSuperandes {
 		return tablas.get(5);
 	}
 
-	public String darTablaCategoriaProducto() {
+	public String darTablaProveedor() {
 		return tablas.get(6);
 	}
 
-	public String darTablaProveedor() {
+	public String darTablaSucursal() {
 		return tablas.get(7);
 	}
 
-	public String darTablaSucursal() {
-		return tablas.get(8);
-	}
-
 	public String darTablaSupermercado() {
-		return tablas.get(9);
+		return tablas.get(8);
 	}
 
 	
 	public String darTablaPromocion() {
-		return tablas. get(10);
+		return tablas. get(9);
 	}
 
 
@@ -229,9 +220,6 @@ private long nextval()
  * 			Métodos para manejar la BODEGA
  *****************************************************************/
 /* ****************************************************************
- * 			Métodos para manejar las CATEGORIAS PRODUCTO
- *****************************************************************/	
-/* ****************************************************************
  * 			Métodos para manejar los CLIENTES
  *****************************************************************/
 /**
@@ -250,12 +238,12 @@ public Cliente registrarCliente( String nombre, String correo, int numDocumento,
     {
         tx.begin();
         long idCliente = nextval ();
-        long tuplasInsertadas = sqlCliente.registrarCliente(pmf.getPersistenceManager(), idCliente ,numDocumento, nombre, nit, correo, direccion, tipo, idSupermercado);
+        long tuplasInsertadas = sqlCliente.registrarCliente(pmf.getPersistenceManager(), idCliente ,numDocumento, nombre, nit, correo, direccion, tipo);
         tx.commit();
 
         log.trace ("Inserción de cliente: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
         
-        return new Cliente (idCliente, numDocumento, nit, nombre, correo, direccion, tipo,idSupermercado);
+        return new Cliente (idCliente, numDocumento, nit, nombre, correo, direccion, tipo);
     }
     catch (Exception e)
     {
@@ -461,14 +449,14 @@ public Producto registrarProducto( String nombre, String marca, double precioUni
  * @param idBebida - El identificador de la bebida
  * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
  */
-public long eliminarProducto(long idSucursal, long idEstante, long idBodega) 
+public long eliminarProducto(String codigo) 
 {
 	PersistenceManager pm = pmf.getPersistenceManager();
     Transaction tx=pm.currentTransaction();
     try
     {
         tx.begin();
-        long resp = sqlProducto.eliminarProducto(pm, idSucursal, idEstante, idBodega);           
+        long resp = sqlProducto.eliminarProducto(pm, codigo);           
         tx.commit();
 
         return resp;

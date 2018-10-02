@@ -45,11 +45,7 @@ public class Cliente implements VOCliente {
 	 */
 	
 	private String tipoCliente;
-	
-	//---------------------------- Asociaciones -----------------------------//
-
-	private String idSupermercado;
-	
+		
 	//---------------------------- Constructor -----------------------------//
 
 	public Cliente() {
@@ -60,10 +56,9 @@ public class Cliente implements VOCliente {
 		this.correo = "";
 		this.direccion = "";
 		this.tipoCliente = "";
-		this.idSupermercado = "";
 	}
 
-	public Cliente(long id, int documento, int NIT, String nombre, String direccion, String correo ,String tipo, String idSupermercado)
+	public Cliente(long id, int documento, int NIT, String nombre, String direccion, String correo ,String tipo)
 	{
 		this.id = id;
 		this.documentoIdentificacion = documento;
@@ -72,7 +67,6 @@ public class Cliente implements VOCliente {
 		this.correo = correo;
 		this.direccion = direccion;
 		this.tipoCliente = tipo;
-		this.idSupermercado = idSupermercado;
 	}
 	
 	//--------------------------------- Métodos -------------------------------------//
@@ -142,20 +136,10 @@ public class Cliente implements VOCliente {
 		this.tipoCliente = tipoCliente;
 	}
 	
-	@Override
-	public String getIdSupermercado() {
-		// TODO Auto-generated method stub
-		return idSupermercado;
-	}
-	
-	public void setIdSupermercado(String id)
-	{
-		this.idSupermercado = id;
-	}
 	
 	public String toString()
 	{
-		return "Cliente [ id=" + documentoIdentificacion + "nombre" + nombre + "correo" + correo + "dirección" + direccion + "tipo cliente" + tipoCliente + "id supermercado" + idSupermercado + "]";
+		return "Cliente [ id=" + documentoIdentificacion + "nombre" + nombre + "correo" + correo + "dirección" + direccion + "tipo cliente" + tipoCliente + "]";
 	}
 
 	@Override

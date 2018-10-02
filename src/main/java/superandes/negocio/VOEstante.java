@@ -1,5 +1,7 @@
 package superandes.negocio;
 
+import java.util.LinkedList;
+
 public interface VOEstante {
 
 	public int getNivelAbastecimiento();
@@ -13,5 +15,7 @@ public interface VOEstante {
 	public long getIdEstante();
 	
 	public String getCategoria();
+	
+	public LinkedList<String> getIdProductos();
 	
 }

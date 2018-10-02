@@ -19,10 +19,10 @@ public class SQLPedido {
 		this.ps = ps;
 	}
 	
-	public long registrarPedido(PersistenceManager pm, String idPedido, Date fechaPedido, String idSucursal, LinkedList<String> idProductos, LinkedList<String> idProveedores)
+	public long registrarPedido(PersistenceManager pm, String idPedido, Date fechaPedido, String idSucursal, LinkedList<String> idProductos, String idProveedor)
 	{
-		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaPedido() + "(idPedido, fechaPedido ,idSucursal, idProductos, idProveedores) values (?,?,?,?,?)");
-		q.setParameters(idPedido, idSucursal, idProductos, idProveedores);
+		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaPedido() + "(idPedido, fechaPedido ,idSucursal, idProductos, idProveedor) values (?,?,?,?,?)");
+		q.setParameters(idPedido, idSucursal, idProductos, idProveedor);
 		return (long) q.executeUnique();
 	}
 	

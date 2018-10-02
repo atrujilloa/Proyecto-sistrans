@@ -22,9 +22,10 @@ public class SQLSupermercado {
 		return (long) q.executeUnique();
 	}
 	
-	public long eliminarSupermercado(PersistenceManager pm)
+	public long eliminarSupermercadoId(PersistenceManager pm, long id)
 	{
-		Query q = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaSupermercado());
+		Query q = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaSupermercado() + "WHERE id = ?");
+		q.setParameters(id);
 		return (long) q.executeUnique();
 	}
 }

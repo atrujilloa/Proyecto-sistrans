@@ -61,18 +61,7 @@ public class Producto implements VOProducto {
 	private String codigoBarras;
 	
 	private Date fechaVencimiento;
-	
-	//---------------------------- Asociaciones -----------------------------//
-	/**
-	 * identificador de la sucursal en la cual se encuentra el producto
-	 */
-	private long idSucursal;
-	
-	private long idEstante;
-	
-	private long idBodega;
 
-	
 	//---------------------------- Constructor -----------------------------//
 
 	public Producto()
@@ -85,9 +74,6 @@ public class Producto implements VOProducto {
 		this.volumenEmpaque = 0;
 		this.pesoEmpaque = 0;
 		this.codigoBarras = "";
-		this.idSucursal = 0;
-		this.idEstante = 0;
-		this.idBodega = 0;
 		this.fechaVencimiento = new Date(0);
 	}
 	
@@ -101,10 +87,7 @@ public class Producto implements VOProducto {
 		this.volumenEmpaque = volumen;
 		this.pesoEmpaque = peso;
 		this.codigoBarras = codigo;
-		this.idSucursal = sucursal;
 		this.fechaVencimiento = fechaVencimiento2;
-		this.idEstante = idEstante;
-		this.idBodega = idBodega;
 	}
 
 	//--------------------------------- Métodos -------------------------------------//
@@ -186,17 +169,6 @@ public class Producto implements VOProducto {
 	}
 	
 	@Override
-	public long getIdSucursal() {
-		// TODO Auto-generated method stub
-		return idSucursal;
-	}
-
-	public void setIdSucursal(long id)
-	{
-		this.idSucursal = id;
-	}
-	
-	@Override
 	public Date getFechaVencimiento() {
 		// TODO Auto-generated method stub
 		return fechaVencimiento;
@@ -211,30 +183,10 @@ public class Producto implements VOProducto {
 	public String toString()
 	{
 		return "Producto [ nombre =" + nombre + "marca" + "precio unitario" + precioUnitario + "precio unidad" + precioUnidadMedida + "unidad medida" + unidadMed + "volumen del empaque" + volumenEmpaque + "peso empaque" + pesoEmpaque
-				+ "codigo de barras" + codigoBarras + "id sucursal" + idSucursal + "]";
+				+ "codigo de barras" + codigoBarras + "]";
 	}
 
-	@Override
-	public long getIdEstante() {
-		// TODO Auto-generated method stub
-		return idEstante;
-	}
 
-	public void setIdEstante( long id)
-	{
-		this.idEstante = id;
-	}
-	
-	@Override
-	public long getIdBodega() {
-		// TODO Auto-generated method stub
-		return idBodega;
-	}
-	
-	public void setIdBodega(long id)
-	{
-		this.idBodega = id;
-	}
 	
 	
 	

@@ -18,7 +18,7 @@ public class Pedido implements VOPedido{
 	
 	private LinkedList<String> idProductos;
 	
-	private LinkedList<String> idProveedores;
+	private String idProveedor;
 	
 	//---------------------------- Constructor -----------------------------//
 
@@ -28,17 +28,17 @@ public class Pedido implements VOPedido{
 		this.fechaLLegada = new Date();
 		this.idSucursal = "";
 		this.idProductos = new LinkedList<String>();
-		this.idProveedores = new LinkedList<String>();
+		this.idProveedor = "";
 	}
 	
-	public Pedido(String id, Date fechaPedido, Date fechaLlegada ,String idSucursal)
+	public Pedido(String id, Date fechaPedido, Date fechaLlegada ,String idSucursal, String idProveedor)
 	{
 		this.idPedido = id;
 		this.fechaPedido = fechaPedido;
 		this.fechaLLegada = fechaLlegada;
 		this.idSucursal = idSucursal;
 		idProductos = new LinkedList<>();
-		idProveedores = new LinkedList<>();
+		this.idProveedor = idProveedor;
 	}
 	
 	//--------------------------------- Métodos -------------------------------------//
@@ -74,13 +74,13 @@ public class Pedido implements VOPedido{
 	}
 
 	@Override
-	public LinkedList<String> getIdProveedores() {
-		return idProveedores;
+	public String getIdProveedor() {
+		return idProveedor;
 	}
 	
-	public void setIdProveedores(LinkedList<String> id)
+	public void setIdProveedores(String id)
 	{
-		this.idProveedores = id;
+		this.idProveedor = id;
 	}
 	
 	@Override
@@ -106,7 +106,7 @@ public class Pedido implements VOPedido{
 	@Override
 	public String toString()
 	{
-		return "Pedido [idPedido = " + idPedido + "fechaPedido " + fechaPedido + "fechaLlegada" + fechaLLegada + "idSucursal " + idSucursal + "idProductos " + idProductos + "idProveedores " + idProveedores + "]";
+		return "Pedido [idPedido = " + idPedido + "fechaPedido " + fechaPedido + "fechaLlegada" + fechaLLegada + "idSucursal " + idSucursal + "idProductos " + idProductos + "idProveedor " + idProveedor + "]";
 	}
 
 

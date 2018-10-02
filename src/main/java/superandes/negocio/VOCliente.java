@@ -20,6 +20,5 @@ public interface VOCliente {
 	public String getDireccion();
 	
 	public String tipoCliente();
-	
-	public String getIdSupermercado();
+
 }

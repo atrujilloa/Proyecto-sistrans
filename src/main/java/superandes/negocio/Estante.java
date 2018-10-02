@@ -1,5 +1,7 @@
 package superandes.negocio;
 
+import java.util.LinkedList;
+
 public class Estante implements VOEstante{
 
 	
@@ -23,6 +25,8 @@ public class Estante implements VOEstante{
 
 	private String idSucursal;
 	
+	private LinkedList<String> idProductos;
+	
 	//---------------------------- Constructor -----------------------------//
 
 	public Estante() {
@@ -32,6 +36,7 @@ public class Estante implements VOEstante{
 		this.categoria = "";
 		this.idSucursal = "";
 		this.idEstante = 0;
+		idProductos = new LinkedList<>();
 	}
 	
 	public Estante(long id,int nivelAbastecimiento , double peso, double volumen, String categoria, String idSucursal)
@@ -42,6 +47,7 @@ public class Estante implements VOEstante{
 		this.categoria = categoria;
 		this.idSucursal = idSucursal;
 		this.idEstante = id;
+		idProductos = new LinkedList<>();
 	}
 	
 	//--------------------------------- Métodos -------------------------------------//
@@ -115,5 +121,16 @@ public class Estante implements VOEstante{
 	public void setCategoria(String categoria)
 	{
 		this.categoria = categoria;
+	}
+
+	@Override
+	public LinkedList<String> getIdProductos() {
+		// TODO Auto-generated method stub
+		return idProductos;
+	}
+	
+	public void setIdProductos(LinkedList<String> list)
+	{
+		this.idProductos = list;
 	}
 }
