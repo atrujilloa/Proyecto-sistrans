@@ -6,12 +6,11 @@ import com.google.gson.JsonObject;
 
 import java.util.LinkedList;
 import java.util.List;
-<<<<<<< HEAD
-=======
+
 import java.sql.Timestamp;
 
 import javax.jdo.JDOHelper;
->>>>>>> b5ca9b1898e36dc5861ae17ef148bc434148e763
+
 import javax.jdo.PersistenceManagerFactory;
 
 
