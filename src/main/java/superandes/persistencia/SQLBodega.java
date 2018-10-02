@@ -2,6 +2,9 @@ package superandes.persistencia;
 
 public class SQLBodega {
 
+<<<<<<< HEAD
+
+=======
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -49,4 +52,5 @@ public class SQLBodega {
         q.setParameters(idBar, nombre, ciudad, presupuesto, sedes);
         return (long) q.executeUnique();
 	}
+>>>>>>> b5ca9b1898e36dc5861ae17ef148bc434148e763
 }
