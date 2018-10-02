@@ -88,18 +88,7 @@ public class SQLSucursal {
 		return (List<Sucursal>) q.executeList();
 	}
 	
-	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar la información de UNA SUCURSAL de la 
-	 * base de datos de Parranderos, por su identificador
-	 * @param pm - El manejador de persistencia
-	 * @param idSucursal - El identificador de la sucursal
-	 * @return El objeto Sucursal que tiene el identificador dado
-	 */
-	public Sucursal darSupermercadoPorId (PersistenceManager pm, long idSucursal) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaSucursal() + " WHERE id = ?");
-		q.setResultClass(Supermercado.class);
-		q.setParameters(idSucursal);
-		return (Sucursal) q.executeUnique();
-	}
+	
+	
+	
 }
