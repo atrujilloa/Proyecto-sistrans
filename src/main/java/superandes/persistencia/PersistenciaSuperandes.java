@@ -59,6 +59,10 @@ public class PersistenciaSuperandes {
 
 	private SQLCategoriaProducto sqlCategoriaProducto;
 
+	
+	private SQLPromocion sqlPromocion;
+	
+	
 
 	/* ****************************************************************
 	 * 			Métodos del MANEJADOR DE PERSISTENCIA
@@ -84,10 +88,8 @@ public class PersistenciaSuperandes {
 		tablas.add("PROVEEDOR");
 		tablas.add("SUCURSAL");
 		tablas.add("SUPERMERCADO");
-
-
+		tablas.add("PROMOCION");
 	}
-
 
 	private PersistenciaSuperandes(JsonObject tableConfig)
 	{
@@ -148,7 +150,9 @@ public class PersistenciaSuperandes {
 		sqlProveedor = new SQLProveedor(this);
 		sqlSucursal = new SQLSucursal(this);
 		sqlSupermercado = new SQLSupermercado(this);
+		sqlPromocion = new SQLPromocion(this);
 		sqlUtil = new SQLUtil(this);
+		
 	}
 
 	public String darSeqSuperandes()
@@ -191,6 +195,12 @@ public class PersistenciaSuperandes {
 	public String darTablaSupermercado() {
 		return tablas.get(9);
 	}
+
+	
+	public String darTablaPromocion() {
+		return tablas. get(10);
+	}
+
 
 public long nextval()
 {
@@ -240,4 +250,5 @@ private String darDetalleException(Exception e)
 /* ****************************************************************
  * 			Métodos para manejar los SUPERMERCADO
  *****************************************************************/
+
 }
