@@ -8,6 +8,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import oracle.net.aso.t;
+import superandes.negocio.Pedido;
 
 public class SQLPedido {
 
@@ -22,9 +23,9 @@ public class SQLPedido {
 
 	public List<Object[]> productosPedido( PersistenceManager pm, long idPedido)
 	{
-		String sql = "SELECT count(codigo) , prod.idProducto, prov.idProveedor";
+		String sql = "SELECT count(id) , prod.idProducto, prov.idProveedor";
 		sql += "FROM ";
-		sql += ps.darTablaProducto() + "prod,";
+		sql += ps.darTablaProducto() + " prod,";
 		sql += "INNER JOIN ";
 		sql += ps.darTablaPedido() + "ped, " + "ON prod.idProducto = ped.idProducto";
 		sql += "INNER JOIN";
@@ -37,7 +38,7 @@ public class SQLPedido {
 		return q.executeList();
 	}
 
-	public LinkedList<Long> darProductos(List<Object[]> list)
+	 public LinkedList<Long> darProductos(List<Object[]> list)
 	{
 		LinkedList<Long>	resp = new LinkedList<Long>();
 
@@ -58,8 +59,8 @@ public class SQLPedido {
 	public long registrarPedido(PersistenceManager pm, long idPedido, Date fechaPedido, long idSucursal, long idProveedor)
 	{
 		LinkedList<Long> idProductos = darProductos(productosPedido(pm, idPedido));
-		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaPedido() + "(idPedido, fechaPedido ,idSucursal, idProductos, idProveedor) values (?,?,?,?,?)");
-		q.setParameters(idPedido, fechaPedido, idSucursal, idProductos, idProveedor);
+		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaPedido() + "(idPedido, fechaPedido ,idSucursal, idProductos, idProveedor, estadoPedido) values (?,?,?,?,?)");
+		q.setParameters(idPedido, fechaPedido, idSucursal, idProductos, idProveedor, Pedido.SOLICITADO);
 		return (long) q.executeUnique();
 	}
 
@@ -73,7 +74,7 @@ public class SQLPedido {
 	public long registrarLlegadaPedido( PersistenceManager pm, Date pFechaLlegada, long idPedido, long idBodega)
 	{
 
-		Query q = pm.newQuery(SQL, "UPDATE " + ps.darTablaPedido() + "SET fechaLlegada = ? WHERE idPedido = ?");
+		Query q = pm.newQuery(SQL, "UPDATE " + ps.darTablaPedido() + "SET fechaLlegada = ?, estadoPedido ="+Pedido.ENTREGADO+ "WHERE idPedido = ?");
 		q.setParameters(pFechaLlegada, idPedido);
 		return (long) q.executeUnique();
 	}

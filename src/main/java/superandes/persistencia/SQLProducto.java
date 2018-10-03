@@ -18,10 +18,10 @@ public class SQLProducto {
 		this.ps = ps;
 	}
 	
-	public long registrarProducto(PersistenceManager pm, String nombre, String marca, double precioUnitario, double precioUnidad, String unidadMed, double volumen, double peso, String codigo, Date fechaVencimiento, int nivelReorden)
+	public long registrarProducto(PersistenceManager pm, long idProducto, String nombre, String marca, double precioUnitario, double precioUnidad, String unidadMed, double volumen, double peso, String codigo, Date fechaVencimiento, int nivelReorden, double precioProveedor)
 	{
-		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaProducto() + "(nombre, marca, precioUnitario, precioUnidad, unidadMed, volumen, peso, codigo, fechaVencimiento, nivelReorden) values (?,?,?,?,?,?,?,?,?,?)");
-		q.setParameters(nombre, marca, precioUnitario, precioUnidad, volumen, peso, codigo, fechaVencimiento, nivelReorden);
+		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaProducto() + "(nombre, marca, precioUnitario, precioUnidad, unidadMed, volumen, peso, codigo, fechaVencimiento, nivelReorden, precioProveedor) values (?,?,?,?,?,?,?,?,?,?,?)");
+		q.setParameters(nombre, marca, precioUnitario, precioUnidad, volumen, peso, codigo, fechaVencimiento, nivelReorden, precioProveedor);
 		return (long) q.executeUnique();
 	}
 	

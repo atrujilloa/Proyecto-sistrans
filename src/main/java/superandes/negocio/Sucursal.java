@@ -12,7 +12,7 @@ public class Sucursal implements VOSucursal{
 	 * id de la sucursal
 	 */
 	
-	private long idSucursal;
+	private String idSucursal;
 	
 	/**
 	 * tamaño instalacion
@@ -21,6 +21,7 @@ public class Sucursal implements VOSucursal{
 	
 	private double nivelReorden;
 	
+	private String clave;
 	//---------------------------- Asociaciones -----------------------------//
 	
 	private LinkedList<String> idProveedores;
@@ -33,30 +34,32 @@ public class Sucursal implements VOSucursal{
 
 	//---------------------------- Constructor -----------------------------//
 	public Sucursal() {
-		this.idSucursal = 0;
+		this.idSucursal = "";
 		this.tamañoInstalacion = 0;
 		this.nivelReorden = 0;
+		this.clave = "";
 		this.idSupermercado = 0;
 	}
 
 	
-	public Sucursal(long idSucursal, double tamano, double nivelReorden, long sup)
+	public Sucursal(String idSucursal, double tamano, double nivelReorden, long sup, String clave)
 	{
 		this.idSucursal = idSucursal;
 		this.tamañoInstalacion = tamano;
 		this.nivelReorden = nivelReorden;
 		this.idProveedores = new LinkedList<String>();
 		this.idSupermercado = sup;
+		this.clave = clave;
 	}
 	
 	//--------------------------------- Métodos -------------------------------------//
 	@Override
-	public long getIdSucursal() {
+	public String getIdSucursal() {
 		// TODO Auto-generated method stub
 		return idSucursal;
 	}
 
-	public void setIdSucursal(long ids) {
+	public void setIdSucursal(String ids) {
 		
 		idSucursal = ids;
 	}
@@ -100,6 +103,15 @@ public class Sucursal implements VOSucursal{
 		idProveedores = list;
 	}
 	
+	@Override
+	public String getClave() {
+		// TODO Auto-generated method stub
+		return clave;
+	}
+	
+	public void setClave(String clave) {
+	     this.clave = clave;
+	}
 	@Override
 	public String toString() {
 		return "Sucursal [idSucursal=" + idSucursal + ", tamañoInstalacion=" + tamañoInstalacion + ", nivelReorden=" + nivelReorden + ", idProveedores=" + idProveedores +"idSupermercado="+idSupermercado+"]";

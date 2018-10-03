@@ -45,6 +45,11 @@ public class Cliente implements VOCliente {
 	 */
 	
 	private String tipoCliente;
+	
+	/**
+	 * id supermercado
+	 */
+	private long idSupermercado;
 		
 	//---------------------------- Constructor -----------------------------//
 
@@ -56,9 +61,10 @@ public class Cliente implements VOCliente {
 		this.correo = "";
 		this.direccion = "";
 		this.tipoCliente = "";
+		this.idSupermercado = 0;
 	}
 
-	public Cliente(long id, int documento, int NIT, String nombre, String direccion, String correo ,String tipo)
+	public Cliente(long id, int documento, String nombre, int NIT, String correo, String direccion,String tipo, long idSup)
 	{
 		this.id = id;
 		this.documentoIdentificacion = documento;
@@ -67,6 +73,7 @@ public class Cliente implements VOCliente {
 		this.correo = correo;
 		this.direccion = direccion;
 		this.tipoCliente = tipo;
+		this.idSupermercado = idSup;
 	}
 	
 	//--------------------------------- Métodos -------------------------------------//
@@ -126,22 +133,28 @@ public class Cliente implements VOCliente {
 	}
 	
 	@Override
-	public String tipoCliente() {
+	public String getTipoCliente() {
 		// TODO Auto-generated method stub
 		return tipoCliente;
 	}
+	
 
 	public void setTipoCliente(String tipoCliente)
 	{
 		this.tipoCliente = tipoCliente;
 	}
 	
-	
-	public String toString()
-	{
-		return "Cliente [ id=" + documentoIdentificacion + "nombre" + nombre + "correo" + correo + "dirección" + direccion + "tipo cliente" + tipoCliente + "]";
+	@Override
+	public long getIdSupermercado() {
+		// TODO Auto-generated method stub
+		return idSupermercado;
 	}
 
+	public void setIdSupermercado(long idSupermercado)
+	{
+		this.idSupermercado = idSupermercado;
+	}
+	
 	@Override
 	public long getId() {
 		// TODO Auto-generated method stub
@@ -152,4 +165,12 @@ public class Cliente implements VOCliente {
 	{
 		this.id = id;
 	}
+
+	
+	public String toString()
+	{
+		return "Cliente [ id=" + documentoIdentificacion + "nombre" + nombre + "correo" + correo + "dirección" + direccion + "tipo cliente" + tipoCliente + "]";
+	}
+
 }
+	

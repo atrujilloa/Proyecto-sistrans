@@ -53,7 +53,7 @@ public class SQLVenta {
 	 * @return numero de tuplas insertadas 
 	 */
 
-	public long adicionarVenta (PersistenceManager pm, long idVenta, List<Long> idProducto, long idCliente, long idSucursal) 
+	public long adicionarVenta (PersistenceManager pm, long idVenta, List<Long> idProducto, long idCliente, String idSucursal) 
 	{
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaVenta() + "(idVenta, idProducto, idCliente, idSucursal) values (?, ?, ?)");
 		q.setParameters(idVenta, idProducto, idCliente, idSucursal);
@@ -88,13 +88,25 @@ public class SQLVenta {
 		return (List<Venta>) q.executeList();
 	}
 	
-	public List<Venta> darVentasIdSucursal (PersistenceManager pm, long idSucursal){
+	public List<Venta> darVentasIdSucursal (PersistenceManager pm, String idSucursal){
 		
 		Query q = pm.newQuery(SQL, "SELECT * FROM "+pp.darTablaVenta()+ " WHERE idSucursal = ?");
 		q.setResultClass(Venta.class);
 		q.setParameters(idSucursal);
 		return (List<Venta>) q.executeList();
 		
-		
 	}
+	
+	/*
+	public double totalCosto(PersistenceManager pm, long idVenta) {
+		Query query = pm.newQuery(SQL, "SELECT idProducto FROM "+pp.darTablaVenta()+" WHERE idVenta = ?");
+		query.setParameters(idVenta);
+		List<Long> idProductos =(List<Long>) query.executeList();
+		
+		while(idProductos.iterator().hasNext()) {
+
+			Long id 
+		}
+		
+	}*/
 }

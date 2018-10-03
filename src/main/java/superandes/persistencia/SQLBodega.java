@@ -53,12 +53,12 @@ public class SQLBodega {
 	 * @return El número de tuplas insertadas
 	 */
 
-	public long adicionarBodega (PersistenceManager pm, long idBodega, String categoria, double peso, double volumen, long idSucursal, long idProducto) 
+	public long adicionarBodega (PersistenceManager pm, String categoria, double peso, double volumen, String idSucursal, long idProducto) 
 	{
 		LinkedList<Long> lista = new LinkedList<Long>();
 		lista.add(idProducto);
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaBodega () + "(idBodega, categoria, peso, volumen, idSucursal, idProductos) values (?, ?, ?, ?, ?, ?)");
-		q.setParameters(idBodega, categoria, peso, volumen, idSucursal,lista,lista);
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaBodega () + "(categoria, peso, volumen, idSucursal, idProductos) values (?, ?, ?, ?, ?, ?)");
+		q.setParameters(categoria, peso, volumen, idSucursal,lista,lista);
 		return (long) q.executeUnique();
 	}
 
@@ -71,11 +71,11 @@ public class SQLBodega {
 	 * @param idBodega - El identificador de la bodega
 	 * @return El objeto Bodega que tiene el identificador dado
 	 */
-	public Bodega darBodegaPorId (PersistenceManager pm, String idBodega) 
+	public Bodega darBodegaPorCategoria (PersistenceManager pm, String categoria) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBodega () + " WHERE idBodega = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBodega () + " WHERE categoria = ?");
 		q.setResultClass(Bodega.class);
-		q.setParameters(idBodega);
+		q.setParameters(categoria);
 		return (Bodega) q.executeUnique();
 	}
 

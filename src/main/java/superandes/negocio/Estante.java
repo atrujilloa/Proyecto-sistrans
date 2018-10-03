@@ -36,10 +36,10 @@ public class Estante implements VOEstante{
 		this.categoria = "";
 		this.idSucursal = 0;
 		this.idEstante = 0;
-		idProductos = new LinkedList<>();
+		idProductos = new LinkedList<Long>();
 	}
 	
-	public Estante(long id,int nivelAbastecimiento , double peso, double volumen, String categoria, long idSucursal)
+	public Estante(long id,int nivelAbastecimiento , double peso, double volumen, String categoria, long idSucursal, long idProducto)
 	{
 		this.nivelAbastecimiento = nivelAbastecimiento;
 		this.peso = peso;
@@ -47,7 +47,8 @@ public class Estante implements VOEstante{
 		this.categoria = categoria;
 		this.idSucursal = idSucursal;
 		this.idEstante = id;
-		idProductos = new LinkedList<>();
+		idProductos = new LinkedList<Long>();
+		idProductos.add(idProducto);
 	}
 	
 	//--------------------------------- Métodos -------------------------------------//

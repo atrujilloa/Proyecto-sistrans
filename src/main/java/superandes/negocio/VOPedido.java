@@ -17,4 +17,6 @@ public interface VOPedido {
 	
 	public long getIdProveedor();
 
+	public String getEstadoPedido();
+
 }
