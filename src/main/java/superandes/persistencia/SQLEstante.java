@@ -16,7 +16,7 @@ public class SQLEstante {
 		this.ps = ps;
 	}
 	
-	public long registrarEstante(PersistenceManager pm, long id, int nivelAbastecimiento, double volumen, double peso, String categoria, String idSucursal)
+	public long registrarEstante(PersistenceManager pm, long id, int nivelAbastecimiento, double volumen, double peso, String categoria, long idSucursal)
 	{
 		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaEstante() + "(id, nivelAbastecimiento, volumen, peso, categoria, idSucursal) values (?,?,?,?,?,?)");
 		q.setParameters(id, nivelAbastecimiento, volumen, peso, categoria, idSucursal);

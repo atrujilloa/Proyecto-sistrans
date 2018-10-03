@@ -15,6 +15,8 @@ public class Producto implements VOProducto {
 	public static final String GRAMOS = "gramos";
 	
 	public static final String MILILITROS ="mililitros";
+	
+	private long idProducto;
 		
 	private String nombre;
 	
@@ -61,11 +63,14 @@ public class Producto implements VOProducto {
 	private String codigoBarras;
 	
 	private Date fechaVencimiento;
+	
+	private int nivelReorden;
 
 	//---------------------------- Constructor -----------------------------//
 
 	public Producto()
 	{ 
+		this.idProducto = 0;
 		this.nombre = "";
 		this.marca = "";
 		this.precioUnitario = 0;
@@ -74,12 +79,15 @@ public class Producto implements VOProducto {
 		this.volumenEmpaque = 0;
 		this.pesoEmpaque = 0;
 		this.codigoBarras = "";
-		this.fechaVencimiento = new Date(0);
-		
+	    this.fechaVencimiento = new Date(0);
+
+		this.fechaVencimiento = new Date();
+		this.nivelReorden = 0;
 	}
 	
-	public Producto(String nombre, String marca, double precioUnitario, double precioUnidad, String unidad, double volumen, double peso, String codigo,  Date fechaVencimiento2, long sucursal, long idEstante, long idBodega)
+	public Producto(long idProducto, String nombre, String marca, double precioUnitario, double precioUnidad, String unidad, double volumen, double peso, String codigo,  Date fechaVencimiento2, int nivelReorden , long sucursal, long idEstante, long idBodega)
 	{
+		this.idProducto = idProducto;
 		this.nombre = nombre;
 		this.marca = marca;
 		this.precioUnitario = precioUnitario;
@@ -89,9 +97,21 @@ public class Producto implements VOProducto {
 		this.pesoEmpaque = peso;
 		this.codigoBarras = codigo;
 		this.fechaVencimiento = fechaVencimiento2;
+		this.nivelReorden = nivelReorden;
 	}
 
 	//--------------------------------- Métodos -------------------------------------//
+	
+	public long getIdProducto()
+	{
+		return idProducto;
+	}
+	
+	public void setIdProducto(long idProducto)
+	{
+		this.idProducto = idProducto;
+	}
+	
 	@Override
 	public String getNombre() {
 		// TODO Auto-generated method stub
@@ -180,11 +200,21 @@ public class Producto implements VOProducto {
 		this.fechaVencimiento = fecha;
 	}
 	
+	public int getNivelReorden()
+	{
+		return nivelReorden;
+	}
+	
+	public void setNivelReorden(int nivel)
+	{
+		this.nivelReorden = nivel;
+	}
+	
 	@Override
 	public String toString()
 	{
-		return "Producto [ nombre =" + nombre + "marca" + "precio unitario" + precioUnitario + "precio unidad" + precioUnidadMedida + "unidad medida" + unidadMed + "volumen del empaque" + volumenEmpaque + "peso empaque" + pesoEmpaque
-				+ "codigo de barras" + codigoBarras + "]";
+		return "Producto [ idProducto =" + idProducto + "nombre =" + nombre + "marca" + "precio unitario" + precioUnitario + "precio unidad" + precioUnidadMedida + "unidad medida" + unidadMed + "volumen del empaque" + volumenEmpaque + "peso empaque" + pesoEmpaque
+				+ "codigo de barras" + codigoBarras + "fecha vencimiento " + fechaVencimiento + "nivel de reorden " + nivelReorden +  "]";
 	}
 
 

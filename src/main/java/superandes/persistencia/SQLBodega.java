@@ -144,7 +144,9 @@ public class SQLBodega {
 	 */
 	public long eliminarProductoBodega(PersistenceManager pm, String categ, long idProducto) {
 
+		
 		Query n = pm.newQuery(SQL, "SELECT idProductos FROM "+ pp.darTablaBodega()+" WHERE categoria = ?");
+		 
 		n.setParameters(categ);
 		List<Long> lista = n.executeList();
 		Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaBodega() + " SET idProductos = ? WHERE categoria = ?");

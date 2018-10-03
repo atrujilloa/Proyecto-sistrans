@@ -8,30 +8,30 @@ public class Pedido implements VOPedido{
 	/* ***************************************************************
 	 * Atributos
 	 *****************************************************************/
-	private String idPedido;
+	private long idPedido;
 	
 	private Date fechaPedido;
 	
 	private Date fechaLLegada;
 	//---------------------------- Asociaciones -----------------------------//
-	private String idSucursal;
+	private long idSucursal;
 	
-	private LinkedList<String> idProductos;
+	private LinkedList<Long> idProductos;
 	
-	private String idProveedor;
+	private long idProveedor;
 	
 	//---------------------------- Constructor -----------------------------//
 
 	public Pedido() {
-		this.idPedido = "";
+		this.idPedido = 0;
 		this.fechaPedido = new Date();
 		this.fechaLLegada = new Date();
-		this.idSucursal = "";
-		this.idProductos = new LinkedList<String>();
-		this.idProveedor = "";
+		this.idSucursal = 0;
+		this.idProductos = new LinkedList<Long>();
+		this.idProveedor = 0;
 	}
 	
-	public Pedido(String id, Date fechaPedido, Date fechaLlegada ,String idSucursal, String idProveedor)
+	public Pedido(long id, Date fechaPedido, Date fechaLlegada ,long idSucursal,long idProveedor)
 	{
 		this.idPedido = id;
 		this.fechaPedido = fechaPedido;
@@ -44,41 +44,41 @@ public class Pedido implements VOPedido{
 	//--------------------------------- Métodos -------------------------------------//
 
 	@Override
-	public String getIdPedido() {
+	public long getIdPedido() {
 		return idPedido;
 	}
 	
-	public void setIdPedido(String id)
+	public void setIdPedido(long id)
 	{
 		this.idPedido = id;
 	}
 
 	@Override
-	public String getIdSucursal() {
+	public long getIdSucursal() {
 		return idSucursal;
 	}
 	
-	public void setIdSucursal(String id)
+	public void setIdSucursal(long id)
 	{
 		this.idSucursal = id;
 	}
 
 	@Override
-	public LinkedList<String> getIdProductos() {
+	public LinkedList<Long> getIdProductos() {
 		return idProductos;
 	}
 	
-	public void setIdProductos( LinkedList<String> id)
+	public void setIdProductos( LinkedList<Long> id)
 	{
 		this.idProductos = id;
 	}
 
 	@Override
-	public String getIdProveedor() {
+	public long getIdProveedor() {
 		return idProveedor;
 	}
 	
-	public void setIdProveedores(String id)
+	public void setIdProveedores(long id)
 	{
 		this.idProveedor = id;
 	}
