@@ -23,7 +23,7 @@ public class Estante implements VOEstante{
 	
 	//---------------------------- Asociaciones -----------------------------//
 
-	private String idSucursal;
+	private long idSucursal;
 	
 	private LinkedList<String> idProductos;
 	
@@ -34,12 +34,12 @@ public class Estante implements VOEstante{
 		this.peso = 0;
 		this.volumen = 0;
 		this.categoria = "";
-		this.idSucursal = "";
+		this.idSucursal = 0;
 		this.idEstante = 0;
 		idProductos = new LinkedList<>();
 	}
 	
-	public Estante(long id,int nivelAbastecimiento , double peso, double volumen, String categoria, String idSucursal)
+	public Estante(long id,int nivelAbastecimiento , double peso, double volumen, String categoria, long idSucursal)
 	{
 		this.nivelAbastecimiento = nivelAbastecimiento;
 		this.peso = peso;
@@ -63,12 +63,12 @@ public class Estante implements VOEstante{
 	}
 
 	@Override
-	public String getIdSucursal() {
+	public long getIdSucursal() {
 		// TODO Auto-generated method stub
 		return idSucursal;
 	}
 	
-	public void setIdSucursal(String id)
+	public void setIdSucursal(long id)
 	{
 		this.idSucursal = id;
 	}

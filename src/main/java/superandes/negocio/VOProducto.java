@@ -7,7 +7,8 @@ public interface VOProducto {
 	/* **************************************
 	 * Metodos
 	 ****************************************/
-
+	public long getIdProducto();
+	
 	public String getNombre();
 	
 	public String getMarca();
@@ -24,5 +25,6 @@ public interface VOProducto {
 	
 	public Date getFechaVencimiento();
 	
+	public int getNivelReorden();
 	
 }
