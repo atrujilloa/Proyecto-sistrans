@@ -11,10 +11,13 @@ public class Venta implements VOVenta {
 	
 	private long idVenta;
 	
+	private double total;
+	
 	private LinkedList<String> idProductos;
 	
 	private long idCliente;
 	
+	private long idSucursal;
 	
 	//--------------------------------------------------------------------
 	// Metodos
@@ -27,6 +30,24 @@ public class Venta implements VOVenta {
 	
 	public void setIdVenta(long idVenta) {
 		this.idVenta = idVenta;
+	}
+	
+	@Override
+	public long getIdSucursal() {
+		return idSucursal;
+	}
+	
+	public void setIdSucursal(long ids) {
+		this.idSucursal = ids;
+	}
+	
+	@Override
+	public double getTotal() {
+		return total;
+	}
+	
+	public void setTotal(double ids) {
+		this.total = ids;
 	}
 	
 	@Override

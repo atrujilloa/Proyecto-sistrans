@@ -1,5 +1,7 @@
 package superandes.negocio;
 
+import java.util.LinkedList;
+
 public interface VOBodega {
 	
 	/* *********************************
@@ -19,14 +21,14 @@ public interface VOBodega {
 	public double getVolumenBodega();
 	
 	public double getPesoBodega();
-	/**
-	 * @return id de la bodega
-	 */
+	
 	public long getIdBodega();
 	
 	public long getIdSucursal();
 	
 	@Override
 	public String toString();
+
+	public LinkedList<Long> getIdProductos();
 
 }

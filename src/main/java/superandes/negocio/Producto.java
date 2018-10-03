@@ -75,6 +75,7 @@ public class Producto implements VOProducto {
 		this.pesoEmpaque = 0;
 		this.codigoBarras = "";
 		this.fechaVencimiento = new Date(0);
+		
 	}
 	
 	public Producto(String nombre, String marca, double precioUnitario, double precioUnidad, String unidad, double volumen, double peso, String codigo,  Date fechaVencimiento2, long sucursal, long idEstante, long idBodega)

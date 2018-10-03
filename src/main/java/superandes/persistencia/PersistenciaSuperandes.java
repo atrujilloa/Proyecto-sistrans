@@ -64,6 +64,8 @@ public class PersistenciaSuperandes {
 	
 	private SQLPromocion sqlPromocion;
 	
+	private SQLVenta sqlVenta;
+	
 	
 
 	/* ****************************************************************
@@ -152,6 +154,7 @@ public class PersistenciaSuperandes {
 		sqlSucursal = new SQLSucursal(this);
 		sqlSupermercado = new SQLSupermercado(this);
 		sqlPromocion = new SQLPromocion(this);
+		sqlVenta = new SQLVenta(this);
 		sqlUtil = new SQLUtil(this);
 		
 	}
@@ -490,56 +493,7 @@ public long eliminarProducto(String codigo)
  *****************************************************************/
 /* ****************************************************************
  * 			Métodos para manejar los SUCURSAL
-/**
- * Método que inserta, de manera transaccional, una tupla en la tabla SUCURSAL
- * Adiciona entradas al log de la aplicación
- * @param tamañoInstalacion - tamaño de la bodega 
- * @param nivelReorden - nivel reorden de la sucursal
- * @param idProveedores - proveedores de la sucursal
- * @param idSupermercado - supermercado al cual pertenece la sucursal 
- * @return El objeto BEBEDOR adicionado. null si ocurre alguna Excepción
- */
-public Sucursal adicionarSucursal(double tamañoInstalacion, double nivelReorden, LinkedList<String> idProveedores, String idSupermercado) 
-{
-	PersistenceManager pm = pmf.getPersistenceManager();
-    Transaction tx=pm.currentTransaction();
-    try
-    {
-        tx.begin();
-        String idSucursal = ""+numSucursal++;
-        long tuplasInsertadas = sqlSucursal.adicionarSucursal(pmf.getPersistenceManager(), idSucursal, tamañoInstalacion,nivelReorden, idProveedores, idSupermercado);
-        tx.commit();
-
-        log.trace ("Inserción de la sucursal: " + idSucursal + ": " + tuplasInsertadas + " tuplas insertadas");
-        
-        return new Sucursal (""+idSucursal, tamañoInstalacion, nivelReorden, idProveedores, idSupermercado);
-    }
-    catch (Exception e)
-    {
-//    	e.printStackTrace();
-    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-    	return null;
-    }
-    finally
-    {
-        if (tx.isActive())
-        {
-            tx.rollback();
-        }
-        pm.close();
-    }
-}
-
-
-/**
- * Método que consulta todas las tuplas en la tabla SUCURSAL que tienen el identificador dado
- * @param idSucursal - El identificador del bebedor
- * @return El objeto BEBEDOR, construido con base en la tuplas de la tabla BEBEDOR, que tiene el identificador dado
- */
-public Sucursal darSucursalPorId (String idSucursal) 
-{
-	return (Sucursal) sqlSucursal.darSucursalPorId (pmf.getPersistenceManager(), idSucursal);
-}
+**************************************************************** */
 
 
 

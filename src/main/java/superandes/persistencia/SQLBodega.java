@@ -2,9 +2,12 @@ package superandes.persistencia;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+
+import java.util.LinkedList;
 import java.util.List;
 
 import superandes.negocio.Bodega;
+import superandes.negocio.Producto;
 
 public class SQLBodega {
 
@@ -29,7 +32,7 @@ public class SQLBodega {
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/
-	
+
 	/**
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
@@ -38,27 +41,29 @@ public class SQLBodega {
 	{
 		this.pp = pp;
 	}
-	
+
 	/**
 	 * Crea y ejecuta la sentencia SQL para adicionar una BODEGA a la base de datos de SUPERANDES
 	 * @param pm - El manejador de persistencia
 	 * @param idBodega - El identificador de la bodega
-	 * @param pesoBodga - El peso maximo de capacidad en la bodega 
-	 * @param volumenBodega - volumen maximo en la bodega
+	 * @param categoria - categoria producto 
+	 * @param peso - El peso maximo de capacidad en la bodega 
+	 * @param volumen - volumen maximo en la bodega
 	 * @param idSucursal - identificador de la sucursal a la cual pertenece la bodega 
-	 * @param idCategoria - categoria de los productos de la bodega 
 	 * @return El número de tuplas insertadas
 	 */
-	
-	public long adicionarBar (PersistenceManager pm, String idBar, String nombre, String ciudad, String presupuesto, int sedes) 
+
+	public long adicionarBodega (PersistenceManager pm, long idBodega, String categoria, double peso, double volumen, long idSucursal, long idProducto) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaBodega () + "(idBodega, pesoBodega, volumenBodega, idSucursal, idCategoria) values (?, ?, ?, ?, ?)");
-        q.setParameters(idBar, nombre, ciudad, presupuesto, sedes);
-        return (long) q.executeUnique();
+		LinkedList<Long> lista = new LinkedList<Long>();
+		lista.add(idProducto);
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaBodega () + "(idBodega, categoria, peso, volumen, idSucursal, idProductos) values (?, ?, ?, ?, ?, ?)");
+		q.setParameters(idBodega, categoria, peso, volumen, idSucursal,lista,lista);
+		return (long) q.executeUnique();
 	}
 
-	
-	
+
+
 	/**
 	 * Crea y ejecuta la sentencia SQL para encontrar la información de una bodepa  
 	 * base de datos de Superandes, por su identificador
@@ -73,21 +78,82 @@ public class SQLBodega {
 		q.setParameters(idBodega);
 		return (Bodega) q.executeUnique();
 	}
-	
+
 	/**
 	 * Crea y ejecuta la sentencia SQL para encontrar la información de Las bodegas de la 
 	 * base de datos de Superandes
 	 * @param pm - El manejador de persistencia
 	 * @return Una lista de objetos Bar
 	 */
-	public List<Bodega> darBodega (PersistenceManager pm)
+	public List<Bodega> darBodegas (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBodega ());
 		q.setResultClass(Bodega.class);
 		return (List<Bodega>) q.executeList();
 	}
+
+
+	/**
+	 * 
+	 * @param pm - manejador de la persistencia 
+	 * @param categ - categoria del producto 
+	 * @param idProducto - id del producto a agregar 
+	 * @return
+	 */
+	public long agregarProductoABodega(PersistenceManager pm, String categ, long idProducto) {
+
+		Query n = pm.newQuery(SQL, "SELECT idProductos FROM "+ pp.darTablaBodega()+" WHERE categoria = ?");
+		n.setParameters(categ);
+		List<Long> lista = n.executeList();
+		Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaBodega() + " SET idProductos = ? WHERE categoria = ?");
+		lista.add(idProducto);
+		q.setParameters(lista, categ);
+		return (long) q.executeUnique(); 
+	}
+	/**
+	 * 
+	 * @param pm - el manejador de la persistencia
+	 * @param pCodigoBarras - codigo de barras de los productos
+	 * @return numero de productos con el codigo de barras en la bodega 
+	 */
+	public int cantProductosEnBodega(PersistenceManager pm, String pCodigoBarras) {
+
+		int contador = 0;
+		Query q = pm.newQuery(SQL,"SELECT codigoBarras FROM "+pp.darTablaBodega()+" INNER JOIN "+pp.darTablaProducto()+" ON " +pp.darTablaBodega()+".categoria = "+pp.darTablaProducto()+".categoria WHERE "+pp.darTablaBodega()+".categoria = "+pp.darTablaProducto()+".categoria");
+		List<String> list = q.executeList();
+
+		while(list.listIterator().hasNext()) {
+
+			String next = list.listIterator().next();
+
+			if(next.equals(pCodigoBarras)) {
+				contador++;
+			}
+		}
+
+		return contador;	
+	}
 	
 	
+	/**
+	 * 
+	 * @param pm - manejador de la persistencia 
+	 * @param categ - categoria del producto 
+	 * @param idProducto - id del producto a agregar 
+	 * @return
+	 */
+	public long eliminarProductoBodega(PersistenceManager pm, String categ, long idProducto) {
+
+		Query n = pm.newQuery(SQL, "SELECT idProductos FROM "+ pp.darTablaBodega()+" WHERE categoria = ?");
+		n.setParameters(categ);
+		List<Long> lista = n.executeList();
+		Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaBodega() + " SET idProductos = ? WHERE categoria = ?");
+		lista.add(idProducto);
+		q.setParameters(lista, categ);
+		return (long) q.executeUnique(); 
+	}
+	
+
 }
 
 
