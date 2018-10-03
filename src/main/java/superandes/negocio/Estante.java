@@ -23,9 +23,9 @@ public class Estante implements VOEstante{
 	
 	//---------------------------- Asociaciones -----------------------------//
 
-	private String idSucursal;
+	private long idSucursal;
 	
-	private LinkedList<String> idProductos;
+	private LinkedList<Long> idProductos;
 	
 	//---------------------------- Constructor -----------------------------//
 
@@ -34,12 +34,12 @@ public class Estante implements VOEstante{
 		this.peso = 0;
 		this.volumen = 0;
 		this.categoria = "";
-		this.idSucursal = "";
+		this.idSucursal = 0;
 		this.idEstante = 0;
 		idProductos = new LinkedList<>();
 	}
 	
-	public Estante(long id,int nivelAbastecimiento , double peso, double volumen, String categoria, String idSucursal)
+	public Estante(long id,int nivelAbastecimiento , double peso, double volumen, String categoria, long idSucursal)
 	{
 		this.nivelAbastecimiento = nivelAbastecimiento;
 		this.peso = peso;
@@ -63,12 +63,12 @@ public class Estante implements VOEstante{
 	}
 
 	@Override
-	public String getIdSucursal() {
+	public long getIdSucursal() {
 		// TODO Auto-generated method stub
 		return idSucursal;
 	}
 	
-	public void setIdSucursal(String id)
+	public void setIdSucursal(long id)
 	{
 		this.idSucursal = id;
 	}
@@ -84,12 +84,6 @@ public class Estante implements VOEstante{
 		this.idEstante = id;
 	}
 	
-	public String toString()
-	{
-		return "Estante [ id =" + idEstante + "nivel abastecimiento" + nivelAbastecimiento  + "id sucursal" + idSucursal + "peso" + peso + 
-				" volumen" + volumen + "categoria " + categoria +  "]";
-	}
-
 	@Override
 	public double getPeso() {
 		// TODO Auto-generated method stub
@@ -124,13 +118,20 @@ public class Estante implements VOEstante{
 	}
 
 	@Override
-	public LinkedList<String> getIdProductos() {
+	public LinkedList<Long> getIdProductos() {
 		// TODO Auto-generated method stub
 		return idProductos;
 	}
 	
-	public void setIdProductos(LinkedList<String> list)
+	public void setIdProductos(LinkedList<Long> list)
 	{
 		this.idProductos = list;
 	}
+	
+	public String toString()
+	{
+		return "Estante [ id =" + idEstante + "nivel abastecimiento" + nivelAbastecimiento  + "id sucursal" + idSucursal + "peso" + peso + 
+				" volumen" + volumen + "categoria " + categoria + "id productos" + idProductos+ "]";
+	}
+
 }

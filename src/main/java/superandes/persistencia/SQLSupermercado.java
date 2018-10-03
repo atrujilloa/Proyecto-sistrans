@@ -15,7 +15,7 @@ public class SQLSupermercado {
 		this.ps = ps;
 	}
 	
-	public long registrarSupermercado(PersistenceManager pm, String id)
+	public long registrarSupermercado(PersistenceManager pm, long id)
 	{
 		Query q = pm.newQuery(SQL, "INSERT INTO" + ps.darTablaSupermercado() + "(id) values (?)");
 		q.setParameters(id);

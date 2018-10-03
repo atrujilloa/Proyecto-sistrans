@@ -1,4 +1,4 @@
-package superandes.negocio;
+	package superandes.negocio;
 
 import java.util.LinkedList;
 

@@ -5,16 +5,16 @@ import java.util.LinkedList;
 
 public interface VOPedido {
 	
-	public String getIdPedido();
+	public long getIdPedido();
 	
 	public Date getFechaPedido();
 	
 	public Date getFechaLlegada();
 	
-	public String getIdSucursal();
+	public long getIdSucursal();
 	
-	public LinkedList<String> getIdProductos();
+	public LinkedList<Long> getIdProductos();
 	
-	public String getIdProveedor();
+	public long getIdProveedor();
 
 }
