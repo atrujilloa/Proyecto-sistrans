@@ -4,6 +4,10 @@ import java.util.Date;
 import java.util.LinkedList;
 
 public class Pedido implements VOPedido{
+	
+	
+	public final static String SOLICITADO = "Solicitado";
+	public final static String ENTREGADO = "Entregado";
 
 	/* ***************************************************************
 	 * Atributos
@@ -13,6 +17,8 @@ public class Pedido implements VOPedido{
 	private Date fechaPedido;
 	
 	private Date fechaLLegada;
+	
+	private String estadoPedido;
 	//---------------------------- Asociaciones -----------------------------//
 	private long idSucursal;
 	
@@ -29,9 +35,10 @@ public class Pedido implements VOPedido{
 		this.idSucursal = 0;
 		this.idProductos = new LinkedList<Long>();
 		this.idProveedor = 0;
+		this.estadoPedido = "";
 	}
 	
-	public Pedido(long id, Date fechaPedido, Date fechaLlegada ,long idSucursal,long idProveedor)
+	public Pedido(long id, Date fechaPedido, Date fechaLlegada ,long idSucursal,long idProveedor, String estadoPedido)
 	{
 		this.idPedido = id;
 		this.fechaPedido = fechaPedido;
@@ -39,6 +46,7 @@ public class Pedido implements VOPedido{
 		this.idSucursal = idSucursal;
 		idProductos = new LinkedList<>();
 		this.idProveedor = idProveedor;
+		this.estadoPedido = estadoPedido;
 	}
 	
 	//--------------------------------- Métodos -------------------------------------//
@@ -102,6 +110,18 @@ public class Pedido implements VOPedido{
 	{
 		this.fechaLLegada = fecha;
 	}
+	
+	
+	@Override
+	public String getEstadoPedido() {
+		return estadoPedido;
+	}
+	
+	public void setEstadoPedido(String estadoPed)
+	{
+		this.estadoPedido = estadoPed;
+	}
+	
 	
 	@Override
 	public String toString()

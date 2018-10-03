@@ -8,16 +8,10 @@ public class Bodega implements VOBodega{
 	/* ***************************************************************
 	 * Atributos
 	 *****************************************************************/
-	/**
-	 * id de la bodega
-	 */
-
-	private long idBodega;
 
 	/**
 	 * Capacidad de la bodega
 	 */
-
 	private double pesoBodega;
 	
 	private double volumenBodega;
@@ -28,7 +22,7 @@ public class Bodega implements VOBodega{
 
 	//---------------------------- Asociaciones -----------------------------//
 
-	private long idSucursal;
+	private String idSucursal;
 
 	//---------------------------- Constructor -----------------------------//
 
@@ -36,17 +30,15 @@ public class Bodega implements VOBodega{
 		this.pesoBodega = 0;
 		this.volumenBodega = 0;
 		this.categoria = "";
-		this.idBodega = 0;
-		this.idSucursal = 0;
+		this.idSucursal = "";
 		this.idProductos = new LinkedList<Long>();
 	}
 
-	public Bodega( long idBodega, String categoria, double peso, double volumen, long idSucursal, long idProducto)
+	public Bodega(String categoria, double peso, double volumen, String idSucursal, long idProducto)
 	{
 		this.categoria = categoria;
 		this.pesoBodega = peso;
 		this.volumenBodega = volumen;
-		this.idBodega = idBodega;
 		this.idSucursal = idSucursal;
 		this.idProductos = new LinkedList<Long>();
 		idProductos.add(idProducto);
@@ -84,16 +76,7 @@ public class Bodega implements VOBodega{
 	public void setPesoBodega(double peso) {
 		pesoBodega = peso;
 	}
-	@Override
-	public long getIdBodega() {
-		// TODO Auto-generated method stub
-		return idBodega;
-	}
 
-	public void setIdBodega(long id)
-	{
-		this.idBodega = id;
-	}
 
 	@Override
 	public LinkedList<Long> getIdProductos(){
@@ -104,12 +87,12 @@ public class Bodega implements VOBodega{
 		idProductos = list;
 	}
 	@Override
-	public long getIdSucursal() {
+	public String getIdSucursal() {
 		// TODO Auto-generated method stub
 		return idSucursal;
 	}
 
-	public void setIdSucursal(long id)
+	public void setIdSucursal( String id)
 	{
 		this.idSucursal = id;
 	}
@@ -117,7 +100,8 @@ public class Bodega implements VOBodega{
 	@Override
 
 	public String toString() {
-		return "Bodega [categoria=" + categoria + ", pesoBodega=" + pesoBodega+ ", volumenBodega="+volumenBodega + ", idBodega=" + idBodega + ", idSucural=" + idSucursal + "]";
+		return "Bodega [categoria=" + categoria + ", pesoBodega=" + pesoBodega+ ", volumenBodega="+volumenBodega + ", idSucural=" + idSucursal + "]";
 
 	}
+
 }

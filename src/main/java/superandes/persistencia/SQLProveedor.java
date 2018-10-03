@@ -102,4 +102,18 @@ public class SQLProveedor {
 		
 	}
 	
+	public long actualizarCalificacionCalidad(PersistenceManager pm, double cal, int nitP) {
+		
+		Query q = pm.newQuery(SQL, "SELECT calificacionCalidad FROM "+pp.darTablaProveedor()+"WHERE NIT = ?");
+		q.setParameters(nitP);
+		double num = (double)q.executeUnique();
+		
+		num = (num+cal)/2;
+		
+		Query s = pm.newQuery(SQL, "UPDATE "+pp.darTablaProveedor()+"SET calificacionCalidad ="+num+" WHERE NIT = ?");
+        q.setParameters(nitP);
+        
+        return (long) s.executeUnique();
+	
+	}
 }

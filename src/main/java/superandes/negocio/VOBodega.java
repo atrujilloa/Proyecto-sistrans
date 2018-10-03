@@ -8,10 +8,6 @@ public interface VOBodega {
 	 * Metodos
 	 ***********************************/
 	
-	/**
-	 * @return  id de la categoria
-	 */
-	
 	public String getCategoria();
 	
 	/**
@@ -22,9 +18,7 @@ public interface VOBodega {
 	
 	public double getPesoBodega();
 	
-	public long getIdBodega();
-	
-	public long getIdSucursal();
+	public String getIdSucursal();
 	
 	@Override
 	public String toString();

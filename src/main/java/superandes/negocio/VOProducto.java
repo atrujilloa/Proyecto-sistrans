@@ -26,5 +26,7 @@ public interface VOProducto {
 	public Date getFechaVencimiento();
 	
 	public int getNivelReorden();
+
+	public double getPrecioProveedor();
 	
 }
