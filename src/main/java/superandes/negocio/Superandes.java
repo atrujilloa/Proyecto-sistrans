@@ -177,10 +177,10 @@ public class Superandes {
 	 * @param nombre - El nombre del tipo de bebida
 	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
 	 */
-	public Pedido registrarPedido(Date fechaPedido, Date fechaLlegada, long idSucursal, LinkedList<String> idProductos, long idProveedor)
+	public Pedido registrarPedido(Date fechaPedido, Date fechaLlegada, long idSucursal, long idProveedor)
 	{
-        log.info ("Adicionando pedido: " + fechaPedido + fechaLlegada + idSucursal + idProductos + idProveedor);
-        Pedido pedido= ps.registrarPedido(fechaPedido, fechaLlegada, idSucursal, idProductos, idProveedor);
+        log.info ("Adicionando pedido: " + fechaPedido + fechaLlegada + idSucursal + idProveedor);
+        Pedido pedido= ps.registrarPedido(fechaPedido, fechaLlegada, idSucursal,  idProveedor);
         log.info ("Adicionando pedido: " + pedido);
         return pedido;
 	}
@@ -199,10 +199,10 @@ public class Superandes {
         return resp;
 	}
 	
-	public long registrarLlegadaPedido(Date fechaLlegada, long idPedido)
+	public long registrarLlegadaPedido(Date fechaLlegada, long idPedido, long idBodega)
 	{
 		log.info("Registrando llegada de un pedido: " + fechaLlegada + idPedido);
-		long resp = ps.registrarLlegadaPedido(fechaLlegada, idPedido);
+		long resp = ps.registrarLlegadaPedido(fechaLlegada, idPedido, idBodega);
 		log.info("Registrando fecha llegada pedido: " + resp);
 		return resp;
 	}

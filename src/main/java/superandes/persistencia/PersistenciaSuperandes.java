@@ -416,7 +416,7 @@ public class PersistenciaSuperandes {
 	 * @param presupuesto - El presupuesto del bebedor (ALTO, MEDIO, BAJO)
 	 * @return El objeto BEBEDOR adicionado. null si ocurre alguna Excepción
 	 */
-	public Pedido registrarPedido( Date fechaPedido, Date fechaLlegada, long idSucursal, LinkedList<String> idProductos, long idProveedor)
+	public Pedido registrarPedido( Date fechaPedido, Date fechaLlegada, long idSucursal, long idProveedor)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -424,7 +424,7 @@ public class PersistenciaSuperandes {
 		{
 			tx.begin();
 			long idPedido = nextval();
-			long tuplasInsertadas = sqlPedido.registrarPedido(pmf.getPersistenceManager(), idPedido, fechaPedido, idSucursal, idProductos, idProveedor);
+			long tuplasInsertadas = sqlPedido.registrarPedido(pmf.getPersistenceManager(), idPedido, fechaPedido, idSucursal, idProveedor);
 			tx.commit();
 
 			log.trace ("Inserción del Estante: " + idPedido + ": " + tuplasInsertadas + " tuplas insertadas");
@@ -481,13 +481,13 @@ public class PersistenciaSuperandes {
 		}
 	}
 	
-	public long registrarLlegadaPedido( Date fechaLlegada, long idPedido)
+	public long registrarLlegadaPedido( Date fechaLlegada, long idPedido, long idBodega)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try{
 			tx.begin();
-			long resp = sqlPedido.registrarLlegadaPedido(pm, fechaLlegada, idPedido);
+			long resp = sqlPedido.registrarLlegadaPedido(pm, fechaLlegada, idPedido, idBodega);
 			tx.commit();
 			
 			return resp;

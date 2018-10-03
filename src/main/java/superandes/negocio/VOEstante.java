@@ -16,6 +16,6 @@ public interface VOEstante {
 	
 	public String getCategoria();
 	
-	public LinkedList<String> getIdProductos();
+	public LinkedList<Long> getIdProductos();
 	
 }

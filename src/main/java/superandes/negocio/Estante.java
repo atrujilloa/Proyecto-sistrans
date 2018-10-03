@@ -25,7 +25,7 @@ public class Estante implements VOEstante{
 
 	private long idSucursal;
 	
-	private LinkedList<String> idProductos;
+	private LinkedList<Long> idProductos;
 	
 	//---------------------------- Constructor -----------------------------//
 
@@ -84,12 +84,6 @@ public class Estante implements VOEstante{
 		this.idEstante = id;
 	}
 	
-	public String toString()
-	{
-		return "Estante [ id =" + idEstante + "nivel abastecimiento" + nivelAbastecimiento  + "id sucursal" + idSucursal + "peso" + peso + 
-				" volumen" + volumen + "categoria " + categoria +  "]";
-	}
-
 	@Override
 	public double getPeso() {
 		// TODO Auto-generated method stub
@@ -124,13 +118,20 @@ public class Estante implements VOEstante{
 	}
 
 	@Override
-	public LinkedList<String> getIdProductos() {
+	public LinkedList<Long> getIdProductos() {
 		// TODO Auto-generated method stub
 		return idProductos;
 	}
 	
-	public void setIdProductos(LinkedList<String> list)
+	public void setIdProductos(LinkedList<Long> list)
 	{
 		this.idProductos = list;
 	}
+	
+	public String toString()
+	{
+		return "Estante [ id =" + idEstante + "nivel abastecimiento" + nivelAbastecimiento  + "id sucursal" + idSucursal + "peso" + peso + 
+				" volumen" + volumen + "categoria " + categoria + "id productos" + idProductos+ "]";
+	}
+
 }

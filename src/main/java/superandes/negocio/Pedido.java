@@ -16,7 +16,7 @@ public class Pedido implements VOPedido{
 	//---------------------------- Asociaciones -----------------------------//
 	private long idSucursal;
 	
-	private LinkedList<String> idProductos;
+	private LinkedList<Long> idProductos;
 	
 	private long idProveedor;
 	
@@ -27,7 +27,7 @@ public class Pedido implements VOPedido{
 		this.fechaPedido = new Date();
 		this.fechaLLegada = new Date();
 		this.idSucursal = 0;
-		this.idProductos = new LinkedList<String>();
+		this.idProductos = new LinkedList<Long>();
 		this.idProveedor = 0;
 	}
 	
@@ -64,11 +64,11 @@ public class Pedido implements VOPedido{
 	}
 
 	@Override
-	public LinkedList<String> getIdProductos() {
+	public LinkedList<Long> getIdProductos() {
 		return idProductos;
 	}
 	
-	public void setIdProductos( LinkedList<String> id)
+	public void setIdProductos( LinkedList<Long> id)
 	{
 		this.idProductos = id;
 	}

@@ -13,7 +13,7 @@ public interface VOPedido {
 	
 	public long getIdSucursal();
 	
-	public LinkedList<String> getIdProductos();
+	public LinkedList<Long> getIdProductos();
 	
 	public long getIdProveedor();
 
