@@ -79,6 +79,8 @@ public class Producto implements VOProducto {
 		this.volumenEmpaque = 0;
 		this.pesoEmpaque = 0;
 		this.codigoBarras = "";
+	    this.fechaVencimiento = new Date(0);
+
 		this.fechaVencimiento = new Date();
 		this.nivelReorden = 0;
 	}

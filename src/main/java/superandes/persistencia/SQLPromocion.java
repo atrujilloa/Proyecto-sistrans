@@ -19,20 +19,21 @@ public class SQLPromocion {
 		
 		public long registrarPromocion(PersistenceManager pm, String idPromocion, LinkedList<String> productos, String tipoPromocion)
 		{
-			Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaPromocion() + "(idPromocion, productos, tipoPromocion) values (?,?,?)");
+			Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaPromocion() + "(idPromocion, idProductos, tipoPromocion) values (?,?,?)");
 			q.setParameters(idPromocion, productos, tipoPromocion);
 			return (long) q.executeUnique();
 		}
 		
+		
+		/** VERIFICAR 
+		 
 		public long eliminarPromocion(PersistenceManager pm)
 		{
 			Query q = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaPromocion());
 			return (long) q.executeUnique();
 		}
+		**/
 
-		public void registrarPromocion() {
-			
-		}
 		
 		
 }

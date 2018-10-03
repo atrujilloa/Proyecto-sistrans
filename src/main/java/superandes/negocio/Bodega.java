@@ -1,5 +1,7 @@
 package superandes.negocio;
 
+import java.util.LinkedList;
+
 public class Bodega implements VOBodega{
 
 
@@ -21,6 +23,8 @@ public class Bodega implements VOBodega{
 	private double volumenBodega;
 	
 	private String categoria;
+	
+	private LinkedList<Long> idProductos;
 
 	//---------------------------- Asociaciones -----------------------------//
 
@@ -34,15 +38,18 @@ public class Bodega implements VOBodega{
 		this.categoria = "";
 		this.idBodega = 0;
 		this.idSucursal = 0;
+		this.idProductos = new LinkedList<Long>();
 	}
 
-	public Bodega( String categoria, double peso, double volumen, long idBodega, long idSucursal)
+	public Bodega( long idBodega, String categoria, double peso, double volumen, long idSucursal, long idProducto)
 	{
 		this.categoria = categoria;
 		this.pesoBodega = peso;
 		this.volumenBodega = volumen;
 		this.idBodega = idBodega;
 		this.idSucursal = idSucursal;
+		this.idProductos = new LinkedList<Long>();
+		idProductos.add(idProducto);
 	}
 
 	//--------------------------------- Métodos -------------------------------------//
@@ -88,6 +95,14 @@ public class Bodega implements VOBodega{
 		this.idBodega = id;
 	}
 
+	@Override
+	public LinkedList<Long> getIdProductos(){
+		return idProductos;
+	}
+	
+	public void setIdProductos(LinkedList<Long> list) {
+		idProductos = list;
+	}
 	@Override
 	public long getIdSucursal() {
 		// TODO Auto-generated method stub

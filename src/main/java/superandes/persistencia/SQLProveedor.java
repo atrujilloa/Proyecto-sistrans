@@ -87,4 +87,19 @@ public class SQLProveedor {
 		return (List<Proveedor>) q.executeList();
 	}
 	
+	/**
+	 * 
+	 * @param pm manejador de persistencia 
+	 * @param nitP nit del proveedor
+	 * @return una lista con los id de los productos del proveedor
+	 */
+	
+	public List<Long> darIdProductos(PersistenceManager pm, int nitP){
+		
+		Query q = pm.newQuery(SQL, "SELECT idProductos FROM "+pp.darTablaProveedor()+" WHERE NIT = ?");
+		q.setParameters(nitP);
+		return (List<Long>) q.executeList();
+		
+	}
+	
 }

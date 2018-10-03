@@ -65,6 +65,7 @@ public class PersistenciaSuperandes {
 
 	private SQLPromocion sqlPromocion;
 
+	private SQLVenta sqlVenta;
 
 
 	/* ****************************************************************
@@ -153,6 +154,7 @@ public class PersistenciaSuperandes {
 		sqlSucursal = new SQLSucursal(this);
 		sqlSupermercado = new SQLSupermercado(this);
 		sqlPromocion = new SQLPromocion(this);
+		sqlVenta = new SQLVenta(this);
 		sqlUtil = new SQLUtil(this);
 
 	}
@@ -352,6 +354,16 @@ public class PersistenciaSuperandes {
 			tx.commit();
 
 			log.trace ("Inserción del Estante: " + idEstante + ": " + tuplasInsertadas + " tuplas insertadas");
+
+/* ****************************************************************
+ * 			Métodos para manejar los PROMOCION
+ *****************************************************************/
+/* ****************************************************************
+ * 			Métodos para manejar los PROVEEDOR
+ *****************************************************************/
+/* ****************************************************************
+ * 			Métodos para manejar los SUCURSAL
+**************************************************************** */
 
 			return new Estante( idEstante, nivel, volumen, peso, categoria, idSucursal);
 		}
@@ -640,7 +652,6 @@ public class PersistenciaSuperandes {
 	{
 		return (Sucursal) sqlSucursal.darSucursalPorId (pmf.getPersistenceManager(), idSucursal);
 	}
-
 
 
 	/* ****************************************************************

@@ -27,18 +27,17 @@ public class SQLUtil {
 	
 	public long[] limpiarSuperandes(PersistenceManager pm)
 	{
-		Query qBodega = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaBodega());
-		Query qCategoriaProducto = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaCategoriaProducto());
-		Query qCliente = pm.newQuery(SQL, "DELETE FORM " + ps.darTablaCliente());
+		Query qBodega = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaBodega());Query qCliente = pm.newQuery(SQL, "DELETE FORM " + ps.darTablaCliente());
 		Query qEstante = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaEstante());
 		Query qPedido = pm.newQuery(SQL, "DLET FROM " + ps.darTablaPedido());
 		Query qProducto = pm.newQuery(SQL, "DLEETE FROM " + ps.darTablaProducto());
 		Query qProveedor = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaProveedor());
 		Query qSucursal = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaSucursal());
 		Query qSupermercado = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaSupermercado());
+		Query qPromocion = pm.newQuery(SQL, "DELETE FROM"+ps.darTablaPromocion());
+		Query qVenta = pm.newQuery(SQL, "DELETE FROM"+ps.darTablaVenta());
 		
 		long bodegaEliminado = (long) qBodega.executeUnique();
-		long categoriaEliminado = (long) qCategoriaProducto.executeUnique();
 		long clienteEliminado = (long) qCliente.executeUnique();
 		long estanteEliminado = (long) qEstante.executeUnique();
 		long pedidoEliminado = (long) qPedido.executeUnique();
@@ -46,8 +45,10 @@ public class SQLUtil {
 		long proveedorEliminado = (long) qProveedor.executeUnique();
 		long sucursalEliminado = (long)qSucursal.executeUnique();
 		long supermercadoEliminado = (long)qSupermercado.executeUnique();
+		long promocionEliminado = (long)qPromocion.executeUnique();
+		long ventaEliminado = (long)qVenta.executeUnique();
 		
-		return new long[] {bodegaEliminado, categoriaEliminado, clienteEliminado, estanteEliminado, pedidoEliminado, productoEliminado, proveedorEliminado, sucursalEliminado, supermercadoEliminado};
+		return new long[] {bodegaEliminado, clienteEliminado, estanteEliminado, pedidoEliminado, productoEliminado, proveedorEliminado, sucursalEliminado, supermercadoEliminado, promocionEliminado, ventaEliminado};
 	}
 
 }

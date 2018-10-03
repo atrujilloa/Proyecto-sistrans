@@ -1,5 +1,6 @@
 package superandes.negocio;
 
+import java.sql.Date;
 import java.util.LinkedList;
 
 public class Promocion implements VOPromocion {
@@ -33,6 +34,10 @@ public class Promocion implements VOPromocion {
 	public LinkedList<String> idProductos;
 	
 	public String tipoPromocion;
+	
+	public Date fechaFin;
+	
+	public Date fechaInicio;
 
 	
 	public Promocion() {
@@ -40,13 +45,18 @@ public class Promocion implements VOPromocion {
 		idPromocion = "";
 		idProductos = new LinkedList<String>();
 		tipoPromocion = "";
+		fechaInicio = new Date(0);
+		fechaFin = new Date(0);
+		
 		
 	}
 	
-	public Promocion(String id, LinkedList<String> prod, String tipo) {
+	public Promocion(String id, LinkedList<String> prod, String tipo, Date pInicio, Date pFin) {
 		idPromocion = id;
 		idProductos = prod;
 		tipoPromocion = tipo;
+		fechaInicio = pInicio;
+		fechaFin = pFin;
 	}
 	@Override
 	public String getIdPromocion() {
@@ -84,6 +94,24 @@ public class Promocion implements VOPromocion {
 		
 	}
 	
+	
+	@Override 
+	public Date getFechaInicio() {
+		return fechaInicio;
+	}
+	
+	public void setFechaInicio(Date p) {
+		fechaInicio = p;
+	}
+	
+	@Override 
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+	
+	public void setFechaFin(Date p) {
+		fechaFin = p;
+	}
 	@Override
 	public String toString() {
 		return "Promocion [ id =" + idPromocion +" tipoPromocion" + tipoPromocion + "]";
