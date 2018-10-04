@@ -28,5 +28,4 @@ public interface VOProducto {
 	public int getNivelReorden();
 
 	public double getPrecioProveedor();
-	
 }

@@ -64,15 +64,15 @@ public class Cliente implements VOCliente {
 		this.idSupermercado = 0;
 	}
 
-	public Cliente(long id, int documento, String nombre, int NIT, String correo, String direccion,String tipo, long idSup)
+	public Cliente(long id, int documentoIdentificacion,int NIT, String nombre, String correo, String direccion,String tipoCliente, long idSup)
 	{
 		this.id = id;
-		this.documentoIdentificacion = documento;
+		this.documentoIdentificacion = documentoIdentificacion;
 		this.NIT = NIT;
 		this.nombre = nombre;
 		this.correo = correo;
 		this.direccion = direccion;
-		this.tipoCliente = tipo;
+		this.tipoCliente = tipoCliente;
 		this.idSupermercado = idSup;
 	}
 	

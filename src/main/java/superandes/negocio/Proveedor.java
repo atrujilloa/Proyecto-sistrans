@@ -32,9 +32,9 @@ public class Proveedor implements VOProveedor{
 	 * Id productos que provee el identificador
 	 */
 	
-	private LinkedList<String> idProductos;
+	private LinkedList<Long> productoProveedor;
 	
-	private String idSupermercado;
+	private long idSupermercado;
 
 	//---------------------------- Constructor -----------------------------//
 
@@ -42,16 +42,16 @@ public class Proveedor implements VOProveedor{
 		this.NIT = 0;
 		this.nombre ="";
 		this.calificacionCalidad = 0;
-		this.idProductos = new LinkedList<String>();
-		this.idSupermercado = "";
+		this.productoProveedor = new LinkedList<Long>();
+		this.idSupermercado = 0;
 	}
 	
-	public Proveedor(int nit, String nombre, double calificion, LinkedList<String> idProductos, String idSupermercado)
+	public Proveedor(int nit, String nombre, double calificion, LinkedList<Long> idProductos, long idSupermercado)
 	{
 		this.NIT = nit;
 		this.nombre = nombre;
 		this.calificacionCalidad = calificion;
-		this.idProductos = idProductos;
+		this.productoProveedor = idProductos;
 		this.idSupermercado = idSupermercado;
 	}
 	
@@ -87,18 +87,28 @@ public class Proveedor implements VOProveedor{
 	}
 
 	@Override
-	public LinkedList<String> getIdProductos() {
+	public LinkedList<Long> getIdProductos() {
 		// TODO Auto-generated method stub
-		return idProductos;
+		return productoProveedor;
 	}
 	
-	public void setIdProductos(LinkedList<String> idP) {
-		idProductos = idP;
+	public void setIdProductos(LinkedList<Long> idP) {
+		productoProveedor = idP;
+	}
+	
+	@Override 
+	
+	public long getIdSupermercado() {
+		return idSupermercado;
+	}
+	
+	public void setIdSupermercado(long id) {
+		idSupermercado = id;
 	}
 	
 	@Override
 	public String toString() {
-		return "Proveedor [NIT=" + NIT + ", nombre=" + nombre + ", calificacionCalidad=" + calificacionCalidad + ", idProductos=" + idProductos + "idSupermercado = "+idSupermercado+"]";
+		return "Proveedor [NIT=" + NIT + ", nombre=" + nombre + ", calificacionCalidad=" + calificacionCalidad + ", idProductos= idSupermercado = "+idSupermercado+"]";
 
 	}
 	

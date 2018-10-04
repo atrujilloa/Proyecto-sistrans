@@ -13,7 +13,7 @@ public class Venta implements VOVenta {
 	
 	private double total;
 	
-	private LinkedList<String> idProductos;
+	private LinkedList<Object[]> ventaProductos;
 	
 	private long idCliente;
 	
@@ -23,7 +23,7 @@ public class Venta implements VOVenta {
 	public Venta() {
 		idVenta = 0;
 		total = 0;
-		idProductos = new LinkedList<>();
+		ventaProductos = new LinkedList<Object[]>();
 		idCliente = 0;
 		idSucursal ="";
 	}
@@ -34,6 +34,7 @@ public class Venta implements VOVenta {
 		this.total = total;
 		this.idCliente = idCliente;
 		this.idSucursal = idSucursal;
+		ventaProductos = new LinkedList<Object[]>();
 	}
 	
 	//--------------------------------------------------------------------
@@ -68,13 +69,13 @@ public class Venta implements VOVenta {
 	}
 	
 	@Override
-	public LinkedList<String> getIdProductos(){
-		return idProductos;
+	public LinkedList<Object[]> getIdProductos(){
+		return ventaProductos;
 	}
 	
-	public void setGetIdProductos(LinkedList<String> list) {
+	public void setGetIdProductos(LinkedList<Object[]> list) {
 		
-		idProductos = list;
+		ventaProductos = list;
 	}
 	
 	@Override

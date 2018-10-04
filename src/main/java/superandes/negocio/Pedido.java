@@ -20,11 +20,11 @@ public class Pedido implements VOPedido{
 	
 	private String estadoPedido;
 	//---------------------------- Asociaciones -----------------------------//
-	private long idSucursal;
-	
-	private LinkedList<Long> idProductos;
+	private String idSucursal;
 	
 	private long idProveedor;
+	
+	private LinkedList<Object[]> productosPedidos;
 	
 	//---------------------------- Constructor -----------------------------//
 
@@ -32,21 +32,21 @@ public class Pedido implements VOPedido{
 		this.idPedido = 0;
 		this.fechaPedido = new Date();
 		this.fechaLLegada = new Date();
-		this.idSucursal = 0;
-		this.idProductos = new LinkedList<Long>();
+		this.idSucursal = "";
 		this.idProveedor = 0;
 		this.estadoPedido = "";
+		productosPedidos = new LinkedList<Object[]>();
 	}
 	
-	public Pedido(long id, Date fechaPedido, Date fechaLlegada ,long idSucursal,long idProveedor, String estadoPedido)
+	public Pedido(long id, Date fechaPedido, Date fechaLlegada , String estadoPedido,String idSucursal,long idProveedor)
 	{
 		this.idPedido = id;
 		this.fechaPedido = fechaPedido;
 		this.fechaLLegada = fechaLlegada;
 		this.idSucursal = idSucursal;
-		idProductos = new LinkedList<>();
 		this.idProveedor = idProveedor;
 		this.estadoPedido = estadoPedido;
+		productosPedidos = new LinkedList<Object[]>();
 	}
 	
 	//--------------------------------- Métodos -------------------------------------//
@@ -62,24 +62,16 @@ public class Pedido implements VOPedido{
 	}
 
 	@Override
-	public long getIdSucursal() {
+	public String getIdSucursal() {
 		return idSucursal;
 	}
 	
-	public void setIdSucursal(long id)
+	public void setIdSucursal(String id)
 	{
 		this.idSucursal = id;
 	}
 
-	@Override
-	public LinkedList<Long> getIdProductos() {
-		return idProductos;
-	}
 	
-	public void setIdProductos( LinkedList<Long> id)
-	{
-		this.idProductos = id;
-	}
 
 	@Override
 	public long getIdProveedor() {
@@ -126,7 +118,7 @@ public class Pedido implements VOPedido{
 	@Override
 	public String toString()
 	{
-		return "Pedido [idPedido = " + idPedido + "fechaPedido " + fechaPedido + "fechaLlegada" + fechaLLegada + "idSucursal " + idSucursal + "idProductos " + idProductos + "idProveedor " + idProveedor + "]";
+		return "Pedido [idPedido = " + idPedido + "fechaPedido " + fechaPedido + "fechaLlegada" + fechaLLegada + "idSucursal " + idSucursal + "idProductos idProveedor " + idProveedor + "]";
 	}
 
 

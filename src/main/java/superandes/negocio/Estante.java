@@ -9,10 +9,10 @@ public class Estante implements VOEstante{
 	 * Atributos
 	 ***********************************************************/
 	
-	private long idEstante;
-	/**
-	 * Nivel abastecimiento estante 
-	 */
+
+	
+	private long idEstante; 
+	
 	private int nivelAbastecimiento;
 	
 	private double volumen;
@@ -23,32 +23,27 @@ public class Estante implements VOEstante{
 	
 	//---------------------------- Asociaciones -----------------------------//
 
-	private long idSucursal;
-	
-	private LinkedList<Long> idProductos;
+	private String idSucursal;
 	
 	//---------------------------- Constructor -----------------------------//
 
 	public Estante() {
+		this.idEstante = 0;
 		this.nivelAbastecimiento = 0;
 		this.peso = 0;
 		this.volumen = 0;
 		this.categoria = "";
-		this.idSucursal = 0;
-		this.idEstante = 0;
-		idProductos = new LinkedList<Long>();
+		this.idSucursal = "";
 	}
 	
-	public Estante(long id,int nivelAbastecimiento , double peso, double volumen, String categoria, long idSucursal, long idProducto)
+	public Estante(long idEstante, int nivelAbastecimiento , double volumen, double peso, String categoria, String idSucursal)
 	{
 		this.nivelAbastecimiento = nivelAbastecimiento;
 		this.peso = peso;
 		this.volumen = volumen;
 		this.categoria = categoria;
 		this.idSucursal = idSucursal;
-		this.idEstante = id;
-		idProductos = new LinkedList<Long>();
-		idProductos.add(idProducto);
+		this.idEstante = idEstante;
 	}
 	
 	//--------------------------------- Métodos -------------------------------------//
@@ -64,26 +59,17 @@ public class Estante implements VOEstante{
 	}
 
 	@Override
-	public long getIdSucursal() {
+	public String getIdSucursal() {
 		// TODO Auto-generated method stub
 		return idSucursal;
 	}
 	
-	public void setIdSucursal(long id)
+	public void setIdSucursal(String id)
 	{
 		this.idSucursal = id;
 	}
 
-	@Override
-	public long getIdEstante() {
-		// TODO Auto-generated method stub
-		return idEstante;
-	}
 	
-	public void setIdEstante(long id)
-	{
-		this.idEstante = id;
-	}
 	
 	@Override
 	public double getPeso() {
@@ -118,21 +104,21 @@ public class Estante implements VOEstante{
 		this.categoria = categoria;
 	}
 
-	@Override
-	public LinkedList<Long> getIdProductos() {
-		// TODO Auto-generated method stub
-		return idProductos;
+	
+	@Override 
+	
+	public long getIdEstante() {
+		return idEstante;
 	}
 	
-	public void setIdProductos(LinkedList<Long> list)
-	{
-		this.idProductos = list;
+	public void setIdEstante(long id) {
+		idEstante = id;
 	}
 	
 	public String toString()
 	{
-		return "Estante [ id =" + idEstante + "nivel abastecimiento" + nivelAbastecimiento  + "id sucursal" + idSucursal + "peso" + peso + 
-				" volumen" + volumen + "categoria " + categoria + "id productos" + idProductos+ "]";
+		return "Estante [  nivel abastecimiento" + nivelAbastecimiento  + "id sucursal" + idSucursal + "peso" + peso + 
+				" volumen" + volumen + "categoria " + categoria + "id productos ]";
 	}
 
 }

@@ -11,9 +11,7 @@ public interface VOPedido {
 	
 	public Date getFechaLlegada();
 	
-	public long getIdSucursal();
-	
-	public LinkedList<Long> getIdProductos();
+	public String getIdSucursal();
 	
 	public long getIdProveedor();
 

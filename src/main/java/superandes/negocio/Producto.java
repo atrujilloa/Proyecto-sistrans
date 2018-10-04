@@ -67,6 +67,8 @@ public class Producto implements VOProducto {
 	private int nivelReorden;
 	
 	private double precioProveedor;
+	
+	
 
 	//---------------------------- Constructor -----------------------------//
 
@@ -198,6 +200,7 @@ public class Producto implements VOProducto {
 		return fechaVencimiento;
 	}
 	
+	
 	public void setFechaVenciminto(Date fecha)
 	{
 		this.fechaVencimiento = fecha;
@@ -228,6 +231,7 @@ public class Producto implements VOProducto {
 				+ "codigo de barras" + codigoBarras + "fecha vencimiento " + fechaVencimiento + "nivel de reorden " + nivelReorden +  "]";
 	}
 
+	
 
 	
 	

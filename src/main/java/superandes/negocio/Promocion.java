@@ -29,9 +29,9 @@ public class Promocion implements VOPromocion {
 	// Atributos
 	//----------------------------------------------------
 	
-	public String idPromocion;
+	public long idPromocion;
 	
-	public LinkedList<String> idProductos;
+	public LinkedList<Object[]> productosPromocion;
 	
 	public String tipoPromocion;
 	
@@ -42,8 +42,8 @@ public class Promocion implements VOPromocion {
 	
 	public Promocion() {
 		
-		idPromocion = "";
-		idProductos = new LinkedList<String>();
+		idPromocion = 0;
+	    productosPromocion = new LinkedList<Object[]>();
 		tipoPromocion = "";
 		fechaInicio = new Date(0);
 		fechaFin = new Date(0);
@@ -51,34 +51,34 @@ public class Promocion implements VOPromocion {
 		
 	}
 	
-	public Promocion(String id, LinkedList<String> prod, String tipo, Date pInicio, Date pFin) {
+	public Promocion(long id, String tipo, Date pFin, Date pInicio) {
 		idPromocion = id;
-		idProductos = prod;
+		productosPromocion = new LinkedList<>();
 		tipoPromocion = tipo;
 		fechaInicio = pInicio;
 		fechaFin = pFin;
 	}
 	@Override
-	public String getIdPromocion() {
+	public long getIdPromocion() {
 		// TODO Auto-generated method stub
 		return idPromocion;
 	}
 	
-	public void setIdPromocion(String idPromocionx) {
+	public void setIdPromocion(long idPromocionx) {
 		
 		this.idPromocion = idPromocionx;
 	}
 	
 
 	@Override
-	public LinkedList<String> getIdProducto() {
+	public LinkedList<Object[]> getIdProducto() {
 		// TODO Auto-generated method stub
-		return idProductos;
+		return productosPromocion;
 	}
 	
-	public void setIdProducto(LinkedList<String>idProdc) {
+	public void setIdProducto(LinkedList<Object[]>idProdc) {
 		
-		idProductos = idProdc;
+	    productosPromocion = idProdc;
 	}
 
 	@Override

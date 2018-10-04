@@ -36,6 +36,14 @@ public class SQLUtil {
 		Query qSupermercado = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaSupermercado());
 		Query qPromocion = pm.newQuery(SQL, "DELETE FROM"+ps.darTablaPromocion());
 		Query qVenta = pm.newQuery(SQL, "DELETE FROM"+ps.darTablaVenta());
+		Query qPro = pm.newQuery(SQL, "DELETE FROM"+ps.darTablaProductosPedidos());
+		Query qprop = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaProductoProveedor());
+		Query qVentasp = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaVentasProductos());
+		Query qPromocionP = pm.newQuery(SQL, "DELETE FROM"+ps.darTablaPromocionProducto());
+		Query qVentaC = pm.newQuery(SQL, "DELETE FROM"+ps.darTablaVentasCliente());
+		Query qVentaS = pm.newQuery(SQL, "DELETE FROM"+ps.darTablaVentaSucursal());
+		
+		
 		
 		long bodegaEliminado = (long) qBodega.executeUnique();
 		long clienteEliminado = (long) qCliente.executeUnique();
@@ -47,8 +55,14 @@ public class SQLUtil {
 		long supermercadoEliminado = (long)qSupermercado.executeUnique();
 		long promocionEliminado = (long)qPromocion.executeUnique();
 		long ventaEliminado = (long)qVenta.executeUnique();
+		long p = (long) qPro.executeUnique();
+		long suc = (long)qprop.executeUnique();
+		long su = (long)qVentasp.executeUnique();
+		long pi = (long)qPromocionP.executeUnique();
+		long vent = (long)qVentaC.executeUnique();
+		long vent1 = (long)qVentaS.executeUnique();
 		
-		return new long[] {bodegaEliminado, clienteEliminado, estanteEliminado, pedidoEliminado, productoEliminado, proveedorEliminado, sucursalEliminado, supermercadoEliminado, promocionEliminado, ventaEliminado};
+		return new long[] {p, suc, su, pi,vent,vent1,bodegaEliminado, clienteEliminado, estanteEliminado, pedidoEliminado, productoEliminado, proveedorEliminado, sucursalEliminado, supermercadoEliminado, promocionEliminado, ventaEliminado};
 	}
 
 }

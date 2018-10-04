@@ -6,9 +6,9 @@ import java.util.LinkedList;
 public interface VOPromocion {
 	
 	
-	public String getIdPromocion();
+	public long getIdPromocion();
 	
-	public LinkedList<String> getIdProducto();
+	public LinkedList<Object[]> getIdProducto();
 	
 	public String getTipoPromocion();
 	
