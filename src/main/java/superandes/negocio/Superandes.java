@@ -77,42 +77,14 @@ public class Superandes {
 	 * @param nombre - El nombre del tipo de bebida
 	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
 	 */
-	public Cliente registrarCliente(int documento, int nit, String nombre, String direccion, String correo, String tipo)
+	public Cliente registrarCliente(int documento, int nit, String nombre, String direccion, String correo, String tipo, long idSup)
 	{
         log.info ("Adicionando cliente: " + nombre);
-        Cliente cliente = ps.registrarCliente(nombre, correo, documento, tipo, nit, direccion); 		
+        Cliente cliente = ps.adicionarCliente(documento, nombre, nit, correo, direccion, tipo, idSup); 		
         log.info ("Adicionando cliente: " + cliente);
         return cliente;
 	}
 	
-	/**
-	 * Elimina un tipo de bebida por su nombre
-	 * Adiciona entradas al log de la aplicación
-	 * @param nombre - El nombre del tipo de bebida a eliminar
-	 * @return El número de tuplas eliminadas
-	 */
-	public long eliminarClientePorNombre (String nombre)
-	{
-		log.info ("Eliminando cliente por nombre: " + nombre);
-        long resp = ps.eliminarClientePorNombre (nombre);		
-        log.info ("Eliminando cliente por nombre: " + resp + " tuplas eliminadas");
-        return resp;
-	}
-		
-	/**
-	 * Encuentra todos los tipos de bebida en Parranderos
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos TipoBebida con todos los tipos de bebida que conoce la aplicación, llenos con su información básica
-	 */
-	public List<Cliente> darClientesPorNombre(String nombre)
-	{
-		log.info ("Consultando clientes");
-        List<Cliente> clientes = ps.darCLientesPorNombre(nombre);	
-        log.info ("Consultando clientes: " + clientes.size() + " existentes");
-        return clientes;
-	}
-
-
 	/**
 	 * Encuentra el tipos de bebida en Parranderos con el nombre solicitado
 	 * Adiciona entradas al log de la aplicación
@@ -123,17 +95,10 @@ public class Superandes {
 	public Cliente darClientePorId (long idCliente)
 	{
 		log.info ("Buscando cliente por id: " + idCliente);
-		Cliente tb = ps.darCLientePorId(idCliente);
+		Cliente tb = ps.darClienteId(idCliente);
 		return tb;
 	}
-	
-	public List<Cliente> darClientes()
-	{
-		log.info("Consultando los clientes");
-		List<Cliente> list = ps.darClientes();
-		log.info("Consultando clientes : " + list.size());
-		return list;
-	}
+
 	
 	/* *************************************************
 	 * Metodos para manejar los estantes
@@ -145,28 +110,22 @@ public class Superandes {
 	 * @param nombre - El nombre del tipo de bebida
 	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
 	 */
-	public Estante registrarEstante(int nivel, double volumen, double peso, String categoria, long idSucursal)
+	public Estante registrarEstante(int nivel, double volumen, double peso, String categoria, String idSucursal)
 	{
         log.info ("Adicionando estante: " + nivel + volumen + peso);
-        Estante estante = ps.registrarEstante(nivel, volumen, peso, categoria, idSucursal);
+        Estante estante = ps.adicionarEstante(nivel, peso, volumen, categoria, idSucursal);
         log.info ("Adicionando estante: " + estante);
         return estante;
 	}
 	
-	/**
-	 * Elimina un tipo de bebida por su nombre
-	 * Adiciona entradas al log de la aplicación
-	 * @param nombre - El nombre del tipo de bebida a eliminar
-	 * @return El número de tuplas eliminadas
-	 */
-	public long eliminarEstante(long idSucursal)
+
+	public Estante darEstanteSucursal(String idSucursal, String categoria)
 	{
-		log.info ("Eliminando estante de la sucursal : " + idSucursal);
-        long resp = ps.eliminarEstante(idSucursal);		
-        log.info ("Eliminando estante por sucursal: " + resp + " tuplas eliminadas");
-        return resp;
+		log.info ("Adicionando estante: " + idSucursal + categoria);
+        Estante estante = ps.darEstantePorSucursalyCategoria(idSucursal, categoria);
+        log.info ("Adicionando estante: " + estante);
+        return estante;
 	}
-		
 	
 	/* *************************************************
 	 * Metodos para manejar los pedidos
@@ -177,32 +136,18 @@ public class Superandes {
 	 * @param nombre - El nombre del tipo de bebida
 	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
 	 */
-	public Pedido registrarPedido(Date fechaPedido, Date fechaLlegada, long idSucursal, long idProveedor)
+	public Pedido registrarPedido(Date fechaPedido, Date fechaLlegada, String idSucursal, long idProveedor, String estadoPedido)
 	{
         log.info ("Adicionando pedido: " + fechaPedido + fechaLlegada + idSucursal + idProveedor);
-        Pedido pedido= ps.registrarPedido(fechaPedido, fechaLlegada, idSucursal,  idProveedor);
+        Pedido pedido= ps.adicionarPedido(fechaPedido, fechaLlegada, idSucursal, idProveedor, estadoPedido);
         log.info ("Adicionando pedido: " + pedido);
         return pedido;
-	}
-	
-	/**
-	 * Elimina un tipo de bebida por su nombre
-	 * Adiciona entradas al log de la aplicación
-	 * @param nombre - El nombre del tipo de bebida a eliminar
-	 * @return El número de tuplas eliminadas
-	 */
-	public long eliminarPedido(long idSucursal, LinkedList<String> idProductos, long idProveedor)
-	{
-		log.info ("Eliminando pedido de productos de una sucursal a un proveedor: " + idSucursal + idProductos + idProveedor);
-        long resp = ps.eliminarPedido(idSucursal, idProductos, idProveedor);		
-        log.info ("Eliminando pedido de productos por una sucursal a un proveedor: " + resp + " tuplas eliminadas");
-        return resp;
 	}
 	
 	public long registrarLlegadaPedido(Date fechaLlegada, long idPedido, long idBodega)
 	{
 		log.info("Registrando llegada de un pedido: " + fechaLlegada + idPedido);
-		long resp = ps.registrarLlegadaPedido(fechaLlegada, idPedido, idBodega);
+		long resp = ps.registrarLlegadaPedido(idPedido, fechaLlegada);
 		log.info("Registrando fecha llegada pedido: " + resp);
 		return resp;
 	}

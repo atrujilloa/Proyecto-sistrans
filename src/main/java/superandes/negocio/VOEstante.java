@@ -10,12 +10,10 @@ public interface VOEstante {
 	
 	public double getVolumen();
 	
-	public long getIdSucursal();
-	
-	public long getIdEstante();
+	public String getIdSucursal();
 	
 	public String getCategoria();
-	
-	public LinkedList<Long> getIdProductos();
+
+	long getIdEstante();
 	
 }

@@ -6,7 +6,7 @@ public interface VOVenta {
 
 	public long getIdVenta();
 
-	public LinkedList<String> getIdProductos();
+	public LinkedList<Object[]> getIdProductos();
 
 	public long getIdCliente();
 

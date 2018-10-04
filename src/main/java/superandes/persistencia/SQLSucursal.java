@@ -52,7 +52,7 @@ public class SQLSucursal {
 	 * @return El número de tuplas insertadas
 	 */
 	
-	public long adicionarSucursal (PersistenceManager pm, String idSucursal, double tamañoInstalacion, double nivelReorden, String idSupermercado) 
+	public long adicionarSucursal (PersistenceManager pm, String idSucursal, double tamañoInstalacion, double nivelReorden, long idSupermercado) 
 	{
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaSucursal () + "(idSucursal, tamañoInstalacion, nivelReorden, idSupermercado) values (?, ?, ?, ?)");
         q.setParameters(idSucursal, tamañoInstalacion, nivelReorden, idSupermercado);

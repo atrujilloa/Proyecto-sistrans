@@ -22,7 +22,4 @@ public interface VOBodega {
 	
 	@Override
 	public String toString();
-
-	public LinkedList<Long> getIdProductos();
-
 }

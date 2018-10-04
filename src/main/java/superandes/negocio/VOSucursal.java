@@ -12,8 +12,6 @@ public interface VOSucursal {
 	
 	public double getNivelReorden();
 	
-	public LinkedList<String> getIdProveedor();
-	
 	@Override
 	public String toString();
 

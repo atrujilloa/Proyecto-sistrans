@@ -22,19 +22,15 @@ public class SQLCliente {
 		this.ps = ps;
 	}
 	
-	public long registrarCliente(PersistenceManager pm, long id, int documento, String nombre, int nit, String correo, String direccion, String tipo, long idSup)
+	public long registrarCliente(PersistenceManager pm,long id, int documentoIdentificacion,int NIT, String nombre, String correo, String direccion,String tipoCliente, long idSup)
 	{
 	
-		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaCliente() + "(id, documento, nombre, nit, correo, direccion, tipo, idSupermercado) values (?,?,?,?,?,?,?.?)");
-		q.setParameters(id, documento, nombre, nit, correo, direccion, tipo, idSup);
+		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaCliente() + "(id, documentoIdentificacion, NIT, nombre, correo, direccion, tipoCliente, idSupermercado) values (?,?,?,?,?,?,?.?)");
+		q.setParameters(id, documentoIdentificacion,NIT, nombre, correo, direccion, tipoCliente, idSup);
 		return (long) q.executeUnique();
 	}
 	
-	public long eliminarCliente(PersistenceManager pm)
-	{
-		Query q = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaCliente());
-		return (long) q.executeUnique();
-	}
+	
 	
 	public Cliente darClienteId(PersistenceManager pm, long id)
 	{
@@ -44,38 +40,8 @@ public class SQLCliente {
 		return (Cliente) q.executeUnique();
 	}
 	
-	public long eliminarClienteNombre( PersistenceManager pm, String nombre)
-	{
-		Query q = pm.newQuery(SQL, "DELETE FROM " +ps.darTablaCliente() + "WHERE nombre = ?");
-		q.setParameters(nombre);
-		return (long) q.executeUnique();
-	}
+
 	
-	public List<Venta> ventaUsuarioDadoNIT(PersistenceManager pm, int nit) {
-
-		Query q = pm.newQuery(SQL, "SELECT" +ps.darTablaVenta( )+".idVenta, "+ps.darTablaVenta( )+".total, "+ps.darTablaVenta( )+".idProductos, "+ps.darTablaVenta()+".idCliente, "+ps.darTablaVenta()+".idSucursal, FROM"+ ps.darTablaVenta( )+" INNER JOIN "+ps.darTablaCliente( )+"ON "+ps.darTablaVenta( )+".idCliente = "+ps.darTablaCliente( )+".id WHERE "+ps.darTablaCliente( )+".NIT = ?");
-		q.setParameters(nit);
-		q.setResultClass(Venta.class);
-		return (List<Venta>) q.executeResultList();
-
-	}
-
-	public List<Venta> ventaUsuarioDadoDoc(PersistenceManager pm, int doc) {
-
-		Query q = pm.newQuery(SQL, "SELECT" +ps.darTablaVenta( )+".idVenta, "+ps.darTablaVenta( )+".total, "+ps.darTablaVenta( )+".idProductos, "+ps.darTablaVenta()+".idCliente, "+ps.darTablaVenta()+".idSucursal, FROM"+ ps.darTablaVenta( )+" INNER JOIN "+ps.darTablaCliente( )+"ON "+ps.darTablaVenta( )+".idCliente = "+ps.darTablaCliente( )+".id WHERE "+ps.darTablaCliente( )+".documentoIdentificacion = ?");
-		q.setParameters(doc);
-		q.setResultClass(Venta.class);
-		return (List<Venta>) q.executeResultList();
-
-	}
-	
-	public List<Cliente> darClientesNombre( PersistenceManager pm, String nombre)
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + ps.darTablaCliente() + "WHERE nombre = ?");
-		q.setResultClass(Cliente.class);
-		q.setParameters(nombre);
-		return (List<Cliente>) q.executeList();
-	}
 	
 	public List<Cliente> darClientes(PersistenceManager pm)
 	{

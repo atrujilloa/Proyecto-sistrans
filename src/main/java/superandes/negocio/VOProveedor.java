@@ -1,5 +1,6 @@
 package superandes.negocio;
 
+import java.util.LinkedList;
 import java.util.List;
 public interface VOProveedor {
 
@@ -10,9 +11,11 @@ public interface VOProveedor {
 	
 	public double getCalificacionCalidad();
 	
-	public List<String> getIdProductos();
+	public LinkedList<Long> getIdProductos();
 	
 	@Override
 	
 	public String toString();
+
+	public long getIdSupermercado();
 }

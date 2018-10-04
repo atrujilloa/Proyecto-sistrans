@@ -18,7 +18,8 @@ public class Bodega implements VOBodega{
 	
 	private String categoria;
 	
-	private LinkedList<Long> idProductos;
+	private long idBodega;
+	
 
 	//---------------------------- Asociaciones -----------------------------//
 
@@ -31,19 +32,18 @@ public class Bodega implements VOBodega{
 		this.volumenBodega = 0;
 		this.categoria = "";
 		this.idSucursal = "";
-		this.idProductos = new LinkedList<Long>();
+		this.idBodega = 0;
 	}
 
-	public Bodega(String categoria, double peso, double volumen, String idSucursal, long idProducto)
+	public Bodega(long idBodega, double peso, double volumen, String categoria, String idSucursal)
 	{
 		this.categoria = categoria;
 		this.pesoBodega = peso;
 		this.volumenBodega = volumen;
+		this.idBodega = 0;
 		this.idSucursal = idSucursal;
-		this.idProductos = new LinkedList<Long>();
-		idProductos.add(idProducto);
-	}
 
+	}
 	//--------------------------------- Métodos -------------------------------------//
 	@Override
 	public String getCategoria() {
@@ -78,14 +78,6 @@ public class Bodega implements VOBodega{
 	}
 
 
-	@Override
-	public LinkedList<Long> getIdProductos(){
-		return idProductos;
-	}
-	
-	public void setIdProductos(LinkedList<Long> list) {
-		idProductos = list;
-	}
 	@Override
 	public String getIdSucursal() {
 		// TODO Auto-generated method stub

@@ -53,12 +53,12 @@ public class SQLBodega {
 	 * @return El número de tuplas insertadas
 	 */
 
-	public long adicionarBodega (PersistenceManager pm, String categoria, double peso, double volumen, String idSucursal, long idProducto) 
+	public long adicionarBodega (PersistenceManager pm, long idBodega, double pesoBodega, double volumenBodega, String categoria, String idSucursal) 
+	
 	{
-		LinkedList<Long> lista = new LinkedList<Long>();
-		lista.add(idProducto);
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaBodega () + "(categoria, peso, volumen, idSucursal, idProductos) values (?, ?, ?, ?, ?, ?)");
-		q.setParameters(categoria, peso, volumen, idSucursal,lista,lista);
+		
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaBodega () + "(idBodega, pesoBodega, volumenBodega, categoria, idSucursal) values (?, ?, ?, ?, ?)");
+		q.setParameters(idBodega, pesoBodega, volumenBodega, categoria,idSucursal);
 		return (long) q.executeUnique();
 	}
 
@@ -71,11 +71,11 @@ public class SQLBodega {
 	 * @param idBodega - El identificador de la bodega
 	 * @return El objeto Bodega que tiene el identificador dado
 	 */
-	public Bodega darBodegaPorCategoria (PersistenceManager pm, String categoria) 
+	public Bodega darBodegaPorId (PersistenceManager pm, long idBodega) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBodega () + " WHERE categoria = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBodega () + " WHERE idBodega = ?");
 		q.setResultClass(Bodega.class);
-		q.setParameters(categoria);
+		q.setParameters(idBodega);
 		return (Bodega) q.executeUnique();
 	}
 
@@ -93,69 +93,21 @@ public class SQLBodega {
 	}
 
 
-	/**
-	 * 
-	 * @param pm - manejador de la persistencia 
-	 * @param categ - categoria del producto 
-	 * @param idProducto - id del producto a agregar 
-	 * @return
-	 */
-	public long agregarProductoABodega(PersistenceManager pm, String categ, long idProducto) {
-
-		Query n = pm.newQuery(SQL, "SELECT idProductos FROM "+ pp.darTablaBodega()+" WHERE categoria = ?");
-		n.setParameters(categ);
-		List<Long> lista = n.executeList();
-		Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaBodega() + " SET idProductos = ? WHERE categoria = ?");
-		lista.add(idProducto);
-		q.setParameters(lista, categ);
-		return (long) q.executeUnique(); 
-	}
+	
 	/**
 	 * 
 	 * @param pm - el manejador de la persistencia
 	 * @param pCodigoBarras - codigo de barras de los productos
 	 * @return numero de productos con el codigo de barras en la bodega 
 	 */
-	public int cantProductosEnBodega(PersistenceManager pm, String pCodigoBarras) {
+	public int cantProductosEnBodega(PersistenceManager pm, long idBodega) {
 
-		int contador = 0;
-		Query q = pm.newQuery(SQL,"SELECT codigoBarras FROM "+pp.darTablaBodega()+" INNER JOIN "+pp.darTablaProducto()+" ON " +pp.darTablaBodega()+".categoria = "+pp.darTablaProducto()+".categoria WHERE "+pp.darTablaBodega()+".categoria = "+pp.darTablaProducto()+".categoria");
-		List<String> list = q.executeList();
-
-		while(list.listIterator().hasNext()) {
-
-			String next = list.listIterator().next();
-
-			if(next.equals(pCodigoBarras)) {
-				contador++;
-			}
-		}
-
-		return contador;	
+	Query n = pm.newQuery(SQL, "SELECT COUNT (*) FROM "+pp.darTablaBodega()+" INNER JOIN "+pp.darTablaProducto()+" ON "+pp.darTablaBodega()+".idBodega = "+pp.darTablaProducto()+".idBodega WHERE "+ pp.darTablaBodega()+".idBodega = ?");
+	n.setParameters(idBodega);
+	return (int)n.executeUnique();
 	}
 	
 	
-	/**
-	 * 
-	 * @param pm - manejador de la persistencia 
-	 * @param categ - categoria del producto 
-	 * @param idProducto - id del producto a agregar 
-	 * @return
-	 */
-	public long eliminarProductoBodega(PersistenceManager pm, String categ, long idProducto) {
-
-		
-		Query n = pm.newQuery(SQL, "SELECT idProductos FROM "+ pp.darTablaBodega()+" WHERE categoria = ?");
-		 
-		n.setParameters(categ);
-		List<Long> lista = n.executeList();
-		Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaBodega() + " SET idProductos = ? WHERE categoria = ?");
-		lista.add(idProducto);
-		q.setParameters(lista, categ);
-		return (long) q.executeUnique(); 
-	}
-	
-
-}
+}	
 
 

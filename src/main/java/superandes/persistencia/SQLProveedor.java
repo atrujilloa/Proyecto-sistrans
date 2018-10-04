@@ -30,7 +30,7 @@ public class SQLProveedor {
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/
-	
+
 	/**
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
@@ -39,7 +39,7 @@ public class SQLProveedor {
 	{
 		this.pp = pp;
 	}
-	
+
 	/**
 	 * Crea y ejecuta la sentencia SQL para adicionar una Sucursal a la base de datos de SUPERANDES
 	 * @param pm - El manejador de persistencia
@@ -50,15 +50,15 @@ public class SQLProveedor {
 	 * @param idSupermercado - id del supermercado al cual pertenece la sucursal 
 	 * @return El número de tuplas insertadas
 	 */
-	
-	public long adicionarProveedor (PersistenceManager pm, int nit, String nombre, double calificacionCalidad, LinkedList<String> idProductos, String idSupermercado) 
+
+	public long adicionarProveedor (PersistenceManager pm, int nit, String nombre, double calificacionCalidad, LinkedList<Long> idProductos, long idSupermercado) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaProveedor () + "(NIT, nombre, calificacionCalidad, idProductos, idSupermercado) values (?, ?, ?, ?, ?)");
-        q.setParameters(nit, nombre, calificacionCalidad, idProductos, idSupermercado);
-        return (long) q.executeUnique();
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaProveedor () + "(NIT, nombre, calificacionCalidad, idProductos, idSupermercado) values (?, ?, ?, ?, ?)");
+		q.setParameters(nit, nombre, calificacionCalidad, idProductos, idSupermercado);
+		return (long) q.executeUnique();
 	}
-	
-	
+
+
 	/**
 	 * Crea y ejecuta la sentencia SQL para encontrar la información de un proveedor 
 	 * base de datos de Superandes, por su identificador
@@ -73,7 +73,7 @@ public class SQLProveedor {
 		q.setParameters(NIT);
 		return (Proveedor) q.executeUnique();
 	}
-	
+
 	/**
 	 * Crea y ejecuta la sentencia SQL para encontrar la información de Los proveedores de la 
 	 * base de datos de Superandes
@@ -86,34 +86,34 @@ public class SQLProveedor {
 		q.setResultClass(Proveedor.class);
 		return (List<Proveedor>) q.executeList();
 	}
-	
+
 	/**
 	 * 
 	 * @param pm manejador de persistencia 
 	 * @param nitP nit del proveedor
 	 * @return una lista con los id de los productos del proveedor
 	 */
-	
+
 	public List<Long> darIdProductos(PersistenceManager pm, int nitP){
-		
+
 		Query q = pm.newQuery(SQL, "SELECT idProductos FROM "+pp.darTablaProveedor()+" WHERE NIT = ?");
 		q.setParameters(nitP);
 		return (List<Long>) q.executeList();
-		
+
 	}
-	
+
 	public long actualizarCalificacionCalidad(PersistenceManager pm, double cal, int nitP) {
-		
+
 		Query q = pm.newQuery(SQL, "SELECT calificacionCalidad FROM "+pp.darTablaProveedor()+"WHERE NIT = ?");
 		q.setParameters(nitP);
 		double num = (double)q.executeUnique();
-		
+
 		num = (num+cal)/2;
-		
+
 		Query s = pm.newQuery(SQL, "UPDATE "+pp.darTablaProveedor()+"SET calificacionCalidad ="+num+" WHERE NIT = ?");
-        q.setParameters(nitP);
-        
-        return (long) s.executeUnique();
-	
+		q.setParameters(nitP);
+
+		return (long) s.executeUnique();
+
 	}
 }

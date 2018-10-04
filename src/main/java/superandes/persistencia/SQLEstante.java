@@ -23,41 +23,25 @@ public class SQLEstante {
 
 	
 
-	public long adicionarEstante (PersistenceManager pm, long id, int nivelAbastecimiento, double peso, double volumen, String categoria, String idSucursal, long idProducto) 
+	public long adicionarEstante (PersistenceManager pm,long idEstante, int nivelAbastecimiento, double volumen, double peso, String categoria, String idSucursal) 
 	{
-		LinkedList<Long> lista = new LinkedList<Long>();
-		lista.add(idProducto);
-		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaEstante() + "(id, nivelAbastecimiento, peso, volumen, categoria, idSucursal, idProductos) values (?,?,?,?,?,?,?)");
-		q.setParameters(id, nivelAbastecimiento, peso, volumen, categoria, idSucursal, lista);
+		
+		Query q = pm.newQuery(SQL, "INSERT INTO " + ps.darTablaEstante() + "(idEstante, nivelAbastecimiento, volumen, peso, categoria, idSucursal) values (?,?,?,?,?,?)");
+		q.setParameters( nivelAbastecimiento, volumen, peso, categoria, idSucursal);
 		return (long) q.executeUnique();
 	}
 
 
-	public long eliminarEstante(PersistenceManager pm, String idEstante)
-	{
-		Query q = pm.newQuery(SQL, "DELETE FROM " + ps.darTablaEstante() + "WHERE idEstante = ?");
-		q.setParameters(idEstante);
-		return (long) q.executeUnique();
-	}
 
-	public Estante darEstantePorCategoria (PersistenceManager pm, String categoria) 
+
+	public Estante darEstantePorCategoriaySucursal (PersistenceManager pm, String categoria, String idSucursal) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + ps.darTablaEstante() + " WHERE categoria = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + ps.darTablaEstante() + " WHERE categoria = ? and idSucursal ?");
 		q.setResultClass(Estante.class);
-		q.setParameters(categoria);
+		q.setParameters(categoria, idSucursal);
 		return (Estante) q.executeUnique();
 	}
 	
-	public long agregarProductoAEstante(PersistenceManager pm, String categ, long idProducto) {
 
-		Query n = pm.newQuery(SQL, "SELECT idProductos FROM "+ ps.darTablaEstante()+" WHERE categoria = ?");
-		n.setParameters(categ);
-		List<Long> lista = n.executeList();
-		Query q = pm.newQuery(SQL, "UPDATE " + ps.darTablaEstante() + " SET idProductos = ? WHERE categoria = ?");
-		lista.add(idProducto);
-		q.setParameters(lista, categ);
-		return (long) q.executeUnique(); 
-	}
-	
 	
 }
